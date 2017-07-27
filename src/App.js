@@ -34,7 +34,9 @@ class App extends Component {
     return (
       <div className="App">
         <Nav />
-        <Main />
+        <Main
+          cards={this.state.results}
+        />
       </div>
     );
   }
