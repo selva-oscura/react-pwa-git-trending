@@ -19,6 +19,7 @@ const isLocalhost = Boolean(
 );
 
 export default function register() {
+  console.log('register')
   if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
     // The URL constructor is available in all browsers that support SW.
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
@@ -40,6 +41,8 @@ export default function register() {
         checkValidServiceWorker(swUrl);
       }
     });
+  }else{
+    console.log('either not production or no service worker')
   }
 }
 
@@ -47,10 +50,12 @@ function registerValidSW(swUrl) {
   navigator.serviceWorker
     .register(swUrl)
     .then(registration => {
+      console.log('registering in registerValidSW');
       registration.onupdatefound = () => {
         const installingWorker = registration.installing;
         installingWorker.onstatechange = () => {
           if (installingWorker.state === 'installed') {
+            console.log('Service Worker installed');
             if (navigator.serviceWorker.controller) {
               // At this point, the old content will have been purged and
               // the fresh content will have been added to the cache.
@@ -77,6 +82,7 @@ function checkValidServiceWorker(swUrl) {
   fetch(swUrl)
     .then(response => {
       // Ensure service worker exists, and that we really are getting a JS file.
+      console.log("checking for valid service worker");
       if (
         response.status === 404 ||
         response.headers.get('content-type').indexOf('javascript') === -1
@@ -84,6 +90,7 @@ function checkValidServiceWorker(swUrl) {
         // No service worker found. Probably a different app. Reload the page.
         navigator.serviceWorker.ready.then(registration => {
           registration.unregister().then(() => {
+            console.log('serviceWorker unregistered')
             window.location.reload();
           });
         });
