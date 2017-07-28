@@ -6,8 +6,9 @@ const Main = ({cards}) => {
     <main className="Main container">
       <h5 className="header teal-text">Trending</h5>
       <div className="row trends">
-        {cards.map((card) => (
+        {cards.map((card, i) => (
           <Card
+            key={i}
             title={card.full_name}
             lang={card.language}
             starCount={card.stargazers_count}
