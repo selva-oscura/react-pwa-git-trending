@@ -1,8 +1,9 @@
 import React from 'react';
+import './Card.css';
 
 const Card = ({title, lang, starCount, forkCount, description, link}) => {
   return (
-      <div className="col s12 m4 card-template">
+      <div className="col s12 m4 Card">
       <div className="card horizontal">
         <div className="card-stacked">
           <div className="card-content white-text">
@@ -15,7 +16,7 @@ const Card = ({title, lang, starCount, forkCount, description, link}) => {
             <p>{description}</p>
           </div>
           <div className="card-action">
-            <a href={`https://github.com/${link}`} className="card-link">Visit Repo</a>
+            <a href={link} className="card-link">Visit Repo</a>
           </div>
         </div>
       </div>
