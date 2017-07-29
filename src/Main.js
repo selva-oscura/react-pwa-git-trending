@@ -6,17 +6,20 @@ const Main = ({cards}) => {
     <main className="Main container">
       <h5 className="header teal-text">Trending</h5>
       <div className="row trends">
-        {cards.map((card, i) => (
-          <Card
-            key={i}
-            title={card.full_name}
-            lang={card.language}
-            starCount={card.stargazers_count}
-            forkCount={card.forks_count}
-            description={card.description}
-            link={card.html_url}
-          />
-      ))}
+        { cards && cards.length > 0 ? (
+          cards.map((card, i) => (
+            <Card
+              key={i}
+              title={card.full_name}
+              lang={card.language}
+              starCount={card.stargazers_count}
+              forkCount={card.forks_count}
+              description={card.description}
+              link={card.html_url}
+            />
+        ))) : (
+          <p>No results found</p>
+        )}
       </div>
     </main>
   );
