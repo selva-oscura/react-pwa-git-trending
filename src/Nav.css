@@ -1,10 +1,11 @@
-.Nav .action{
+.Nav button{
   color: rgba(255, 255, 255, .75);
   -webkit-transition: color 0.5s ease-in-out; /* Safari */
   transition: color 0.5s ease-in-out;
+  border: 0;
 }
 
-.Nav .action:hover{
+.Nav button:hover{
   color: rgba(255, 255, 255, 1);
 }
 
