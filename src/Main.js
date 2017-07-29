@@ -1,9 +1,15 @@
 import React from 'react';
+import GitForm from './GitForm';
 import Card from './Card';
 
-const Main = ({cards}) => {
+const Main = ({form, submitForm, updateFormState, cards}) => {
   return (
     <main className="Main container">
+      <GitForm
+        form={form}
+        submitForm={submitForm}
+        updateFormState={updateFormState}
+      />
       <h5 className="header teal-text">Trending</h5>
       <div className="row trends">
         { cards && cards.length > 0 ? (
