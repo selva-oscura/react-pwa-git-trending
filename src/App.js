@@ -66,7 +66,7 @@ class App extends Component {
           submitForm={this.submitForm}
           updateFormState={this.updateFormState}
           cards={this.state.results}
-          lastUpdated={this.lastUpdated}
+          lastUpdated={this.state.lastUpdated}
           updateSearchType={this.updateSearchType}
         />
       </div>
