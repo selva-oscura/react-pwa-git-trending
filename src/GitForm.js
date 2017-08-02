@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const GitForm = ({form, submitForm, updateFormState, updateSearchType}) => {
   const buttonColour = buttonType => {
@@ -72,6 +73,13 @@ const GitForm = ({form, submitForm, updateFormState, updateSearchType}) => {
      </form>
     </div>
   );
+};
+
+GitForm.propTypes = {
+  form: PropTypes.object.isRequired,
+  submitForm: PropTypes.func.isRequired,
+  updateFormState: PropTypes.func.isRequired,
+  updateSearchType: PropTypes.func.isRequired,
 };
 
 export default GitForm;
