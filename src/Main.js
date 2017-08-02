@@ -42,7 +42,7 @@ Main.propTypes = {
   updateFormState: PropTypes.func.isRequired,
   updateSearchType: PropTypes.func.isRequired,
   cards: PropTypes.array.isRequired,
-  lastUpdated: PropTypes.object,
+  lastUpdated: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
 };
 
 export default Main;
