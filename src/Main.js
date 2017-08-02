@@ -2,16 +2,17 @@ import React from 'react';
 import GitForm from './GitForm';
 import Card from './Card';
 
-const Main = ({form, submitForm, updateFormState, cards}) => {
+const Main = ({form, submitForm, updateFormState, updateSearchType, cards, lastUpdated}) => {
   return (
     <main className="Main container">
       <GitForm
         form={form}
         submitForm={submitForm}
         updateFormState={updateFormState}
+        updateSearchType={updateSearchType}
       />
       <h5 className="header teal-text">Trending</h5>
-      <div className="row trends">
+      <div className="row">
         { cards && cards.length > 0 ? (
           cards.map((card, i) => (
             <Card
