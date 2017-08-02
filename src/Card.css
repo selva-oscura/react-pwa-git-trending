@@ -1,17 +1,17 @@
-.Card .card {
+.card {
   background-size: cover;
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("images/card-bg.png");
 }
 
-.Card .card-sub .material-icons {
+.card-sub .material-icons {
   font-size: 18px;
 }
 
-.Card .card-sub span {
+.card-sub span {
   font-size: 18px;
   margin-right: 10px;
 }
 
-.Card .card-content p {
+.card-content p {
   padding-top: 15px;
 }
