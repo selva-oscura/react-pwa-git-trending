@@ -4,7 +4,7 @@ import './Card.css';
 
 const Card = ({title, lang, starCount, forkCount, description, link}) => {
   return (
-      <div className="col s12 m4 Card">
+    <div className="col s12 m6 l4 Card">
       <div className="card horizontal">
         <div className="card-stacked">
           <div className="card-content white-text">
