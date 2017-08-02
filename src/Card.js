@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Card.css';
 
 const Card = ({title, lang, starCount, forkCount, description, link}) => {
@@ -22,6 +23,15 @@ const Card = ({title, lang, starCount, forkCount, description, link}) => {
       </div>
     </div>
   );
+};
+
+Card.propTypes = {
+  title: PropTypes.string.isRequired,
+  lang: PropTypes.string,
+  starCount: PropTypes.number,
+  forkCount: PropTypes.number,
+  description: PropTypes.string,
+  link: PropTypes.string,
 };
 
 export default Card;
