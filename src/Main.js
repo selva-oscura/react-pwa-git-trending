@@ -11,7 +11,10 @@ const Main = ({form, submitForm, updateFormState, updateSearchType, cards, lastU
         updateFormState={updateFormState}
         updateSearchType={updateSearchType}
       />
-      <h5 className="header teal-text">Trending</h5>
+      <div className="row">
+        <h5 className="header teal-text">Trending</h5>
+        <h6>Last Updated: {lastUpdated>0 ? lastUpdated : "never"}</h6>
+      </div>
       <div className="row">
         { cards && cards.length > 0 ? (
           cards.map((card, i) => (
