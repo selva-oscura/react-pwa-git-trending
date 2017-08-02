@@ -10,13 +10,17 @@ class App extends Component {
     this.state = {
       results: [],
       form: {
+        searchType: 'top',
+        searchTerm: '',
         language: '',
       },
       errors: [],
+      lastUpdated: -Infinity,
     };
     this.queryGitHub();
     this.submitForm = this.submitForm.bind(this);
     this.updateFormState = this.updateFormState.bind(this);
+    this.updateSearchType = this.updateSearchType.bind(this);
   }
   queryGitHub(){
     let dates = this.getDates();
@@ -45,6 +49,11 @@ class App extends Component {
     form[e.target.id] = e.target.value;
     this.setState({ form });
   }
+  updateSearchType(searchType){
+    let form = this.state.form;
+    form.searchType = searchType;
+    this.setState({form});
+  }
   submitForm(){
     this.queryGitHub();
   }
@@ -57,6 +66,8 @@ class App extends Component {
           submitForm={this.submitForm}
           updateFormState={this.updateFormState}
           cards={this.state.results}
+          lastUpdated={this.lastUpdated}
+          updateSearchType={this.updateSearchType}
         />
       </div>
     );
