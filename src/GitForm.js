@@ -1,6 +1,13 @@
 import React from 'react';
 
-const GitForm = ({form, submitForm, updateFormState}) => {
+const GitForm = ({form, submitForm, updateFormState, updateSearchType}) => {
+  const buttonColour = buttonType => {
+    return form.searchType === buttonType ? "btn waves-effect teal waves-light" : "btn waves-effect grey waves-teal"
+  }
+  const handleClick = (e) => {
+    e.preventDefault();
+    updateSearchType(e.target.id)
+  };
   return (
     <div className="GitForm row">
       <form>
@@ -29,6 +36,28 @@ const GitForm = ({form, submitForm, updateFormState}) => {
               onChange={updateFormState}
             />
           </label>
+        </div>
+        <div
+          className="col s6 m2"
+        >
+          <button
+            className={buttonColour('top')}
+            id="top"
+            onClick={handleClick}
+          >
+            Top
+          </button>
+        </div>
+        <div
+          className="col s6 m2"
+        >
+          <button
+            className={buttonColour('trending')}
+            id="trending"
+            onClick={handleClick}
+          >
+            Trending
+          </button>
         </div>
         <div className="col s12 m4 offset-m4">
           <button
