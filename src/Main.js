@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import GitForm from './GitForm';
 import Card from './Card';
 
@@ -33,6 +34,15 @@ const Main = ({form, submitForm, updateFormState, updateSearchType, cards, lastU
       </div>
     </main>
   );
+};
+
+Main.propTypes = {
+  form: PropTypes.object.isRequired,
+  submitForm: PropTypes.func.isRequired,
+  updateFormState: PropTypes.func.isRequired,
+  updateSearchType: PropTypes.func.isRequired,
+  cards: PropTypes.array.isRequired,
+  lastUpdated: PropTypes.object,
 };
 
 export default Main;
