@@ -4,8 +4,8 @@ import './Card.css';
 
 const Card = ({title, lang, starCount, forkCount, description, link}) => {
   return (
-    <div className="col s12 m6 l4 Card">
-      <div className="card horizontal">
+    <div className="col s12 m6 l4">
+      <div className="card horizontal hoverable">
         <div className="card-stacked">
           <div className="card-content white-text">
             <span className="card-title">{title}</span>
