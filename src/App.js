@@ -8,28 +8,43 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      results: [],
+      lastSearch: {
+        results: [],
+        parameters: {
+          searchType: 'top',
+          searchTerm: '',
+          language: '',
+        },
+        lastUpdated: -Infinity,
+        lastUpdatedLocal: -Infinity,
+      },
       form: {
         searchType: 'top',
         searchTerm: '',
         language: '',
       },
       errors: [],
-      lastUpdated: -Infinity,
     };
     this.queryGitHub();
     this.submitForm = this.submitForm.bind(this);
     this.updateFormState = this.updateFormState.bind(this);
     this.updateSearchType = this.updateSearchType.bind(this);
   }
+  localDateTime(){
+    const now = new Date();
+    const pad = num => num < 10 ? `0${num}` : num;
+    return `${now.getFullYear()}-${pad(now.getMonth() + 1)}-${pad(now.getDate())}, ${pad(now.getHours())}:${pad(now.getMinutes())}`;
+  }
   queryGitHub(){
-    let dates = this.getDates();
     let form = this.state.form;
-    api.gitHubTrending(dates, form.language)
+    api.queryGithub(form.searchType, form.searchTerm, form.language)
       .then((res, err) => {
         if(res){
-          console.log('res', res.data);
-          this.setState({results: res.data.items.slice(0,30)});
+          let results = res.data.items.slice(0,30);
+          let parameters = Object.assign({}, form);
+          let lastUpdated = new Date().getTime();
+          let lastUpdatedLocal = this.localDateTime();
+          this.setState({lastSearch: { results, parameters, lastUpdated, lastUpdatedLocal } });
         }
         if(err){
           console.log('err', err);
@@ -37,12 +52,6 @@ class App extends Component {
       }).catch((err)=> {
         console.log('unable to access git', err);
       });
-  }
-  getDates(){
-    let dates = {}, now = new Date();
-    dates.endDate = now.toISOString().slice(0,10);
-    dates.startDate = new Date(now.getTime() - 7 * 1000 * 60 * 60 * 24).toISOString().slice(0,10);
-    return dates;
   }
   updateFormState(e){
     let form = this.state.form;
@@ -52,9 +61,10 @@ class App extends Component {
   updateSearchType(searchType){
     let form = this.state.form;
     form.searchType = searchType;
-    this.setState({form});
+    this.setState({ form });
   }
-  submitForm(){
+  submitForm(e){
+    e.preventDefault();
     this.queryGitHub();
   }
   render() {
@@ -65,9 +75,11 @@ class App extends Component {
           form={this.state.form}
           submitForm={this.submitForm}
           updateFormState={this.updateFormState}
-          cards={this.state.results}
-          lastUpdated={this.state.lastUpdated}
           updateSearchType={this.updateSearchType}
+          cards={this.state.lastSearch.results}
+          lastSearchParameters={this.state.lastSearch.parameters}
+          lastUpdated={this.state.lastSearch.lastUpdated}
+          lastUpdatedLocal={this.state.lastSearch.lastUpdatedLocal}
         />
       </div>
     );
