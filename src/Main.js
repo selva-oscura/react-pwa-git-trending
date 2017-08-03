@@ -3,7 +3,23 @@ import PropTypes from 'prop-types';
 import GitForm from './GitForm';
 import Card from './Card';
 
-const Main = ({form, submitForm, updateFormState, updateSearchType, cards, lastUpdated}) => {
+const Main = ({form, submitForm, updateFormState, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
+  const resultsText = () => {
+    let text = `${lastSearchParameters.searchType} results`;
+    if(lastSearchParameters.searchTerm || lastSearchParameters.language){
+      text += " for ";
+    }
+    if(lastSearchParameters.searchTerm){
+      text += `keywords: ${lastSearchParameters.searchTerm}`;
+    }
+    if(lastSearchParameters.searchTerm && lastSearchParameters.language){
+      text += " and ";
+    }
+    if(lastSearchParameters.language){
+      text += `language: ${lastSearchParameters.language}`;
+    }
+    return text.toUpperCase();
+  }
   return (
     <main className="Main container">
       <GitForm
@@ -13,8 +29,8 @@ const Main = ({form, submitForm, updateFormState, updateSearchType, cards, lastU
         updateSearchType={updateSearchType}
       />
       <div className="row">
-        <h5 className="header teal-text">Trending</h5>
-        <h6>Last Updated: {lastUpdated>0 ? lastUpdated : "never"}</h6>
+        <h5 className="header teal-text">{resultsText()}</h5>
+        <h6>Last Updated: {typeof lastUpdatedLocal === "string" ? lastUpdatedLocal : "never"}</h6>
       </div>
       <div className="row">
         { cards && cards.length > 0 ? (
@@ -42,7 +58,8 @@ Main.propTypes = {
   updateFormState: PropTypes.func.isRequired,
   updateSearchType: PropTypes.func.isRequired,
   cards: PropTypes.array.isRequired,
-  lastUpdated: PropTypes.oneOfType([PropTypes.object, PropTypes.number]),
+  lastUpdated: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  lastUpdatedLocal: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default Main;
