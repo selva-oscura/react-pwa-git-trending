@@ -3,6 +3,7 @@
   -webkit-transition: color 0.5s ease-in-out; /* Safari */
   transition: color 0.5s ease-in-out;
   border: 0;
+  max-height: 54px;
 }
 
 .Nav button:hover{
