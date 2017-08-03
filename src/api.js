@@ -10,7 +10,6 @@ const api = {
 
 	// github
   queryGithub: function(searchType, searchTerm, language){
-    console.log('searchType:', searchType, '- searchTerm:', searchTerm, '- language:', language);
     let apiCall = "https://api.github.com/search/repositories?q=";
     if(searchType === "trending"){
       let dates = this.getDates();
@@ -22,19 +21,20 @@ const api = {
     if(language){
       apiCall += `%20language:${language}`;
     }
+    // fallback query for no dates, no searchTerm, & no language, GitHub API requires SOME query parameter
     if(searchType === "top" && !searchTerm && !language){
       apiCall += 'stars:>25000';
     }
     apiCall += '&sort=stars&order=desc';
-    console.log('apiCall', apiCall);
+    // console.log('apiCall', apiCall);
     return axios
       .get(apiCall)
       .then((response) => {
-        console.log('api.queryGithub response', response);
+        // console.log('api.queryGithub response', response);
         return response;
       })
       .catch((error) => {
-        console.log('api.queryGithub error', error);
+        // console.log('api.queryGithub error', error);
         throw error;
       });
   }
