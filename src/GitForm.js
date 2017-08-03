@@ -64,7 +64,6 @@ const GitForm = ({form, submitForm, updateFormState, updateSearchType}) => {
           <button
             className="btn teal waves-effect waves-light"
             type="submit"
-            name="action"
             onClick={submitForm}
           >
             Update<i className="material-icons right">send</i>
