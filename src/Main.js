@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GitForm from './GitForm';
+import Errors from './Errors';
 import Card from './Card';
 
-const Main = ({form, submitForm, updateFormState, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
+const Main = ({errors, form, submitForm, updateFormState, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
   const resultsText = () => {
     let text = `${lastSearchParameters.searchType} results`;
     if(lastSearchParameters.searchTerm || lastSearchParameters.language){
@@ -28,6 +29,7 @@ const Main = ({form, submitForm, updateFormState, updateSearchType, cards, lastS
         updateFormState={updateFormState}
         updateSearchType={updateSearchType}
       />
+      {errors ? <Errors errors={errors} /> : null}
       <div className="row">
         <h5 className="header teal-text">{resultsText()}</h5>
         <h6>Last Updated: {typeof lastUpdatedLocal === "string" ? lastUpdatedLocal : "never"}</h6>
@@ -53,6 +55,7 @@ const Main = ({form, submitForm, updateFormState, updateSearchType, cards, lastS
 };
 
 Main.propTypes = {
+  errors: PropTypes.array,
   form: PropTypes.object.isRequired,
   submitForm: PropTypes.func.isRequired,
   updateFormState: PropTypes.func.isRequired,
