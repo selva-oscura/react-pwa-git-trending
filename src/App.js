@@ -23,7 +23,10 @@ class App extends Component {
         searchTerm: '',
         language: '',
       },
-      errors: [],
+      errors: [
+        "filler 1",
+        "error filler #2",
+      ],
     };
     this.queryGitHub();
     this.submitForm = this.submitForm.bind(this);
@@ -38,19 +41,28 @@ class App extends Component {
   queryGitHub(){
     let form = this.state.form;
     api.queryGithub(form.searchType, form.searchTerm, form.language)
-      .then((res, err) => {
-        if(res){
-          let results = res.data.items.slice(0,30);
-          let parameters = Object.assign({}, form);
-          let lastUpdated = new Date().getTime();
-          let lastUpdatedLocal = this.localDateTime();
-          this.setState({lastSearch: { results, parameters, lastUpdated, lastUpdatedLocal } });
-        }
-        if(err){
-          console.log('err', err);
-        }
+      .then((res) => {
+        // console.log(err.request, err.response)
+        console.log('res', res)
+        let results = res.data.items.slice(0,30);
+        let parameters = Object.assign({}, form);
+        let lastUpdated = new Date().getTime();
+        let lastUpdatedLocal = this.localDateTime();
+        this.setState({lastSearch: { results, parameters, lastUpdated, lastUpdatedLocal } });
       }).catch((err)=> {
         console.log('unable to access git', err);
+        if(String(err) === "Error: Network Error"){
+          console.log('matches expected no internet error -- stringified')
+        }
+        console.log(Object.keys(err), Object.values(err));
+        console.log(err.config);
+        console.log(err.request);
+        console.log(err.response);
+        console.log(err.message);
+        if(err.message==="Network Error"){
+          let errors = this.state.errors;
+          errors.push("You appear to be offline.", "Please check your internet connection.")
+        }
       });
   }
   updateFormState(e){
@@ -72,6 +84,7 @@ class App extends Component {
       <div className="App">
         <Nav />
         <Main
+          errors={this.state.errors}
           form={this.state.form}
           submitForm={this.submitForm}
           updateFormState={this.updateFormState}
