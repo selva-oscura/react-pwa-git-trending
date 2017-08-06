@@ -1,25 +1,26 @@
 .ErrorMessages{
-  -webkit-animation: div-grow 4s; 
-  -moz-animation: div-grow 4s; 
-  -ms-animation: div-grow 4s; 
-  -o-animation: div-grow 4s; 
-  animation: div-grow 4s;
+  -webkit-animation: div-grow 2s;
+  -moz-animation: div-grow 2s;
+  -ms-animation: div-grow 2s;
+  -o-animation: div-grow 2s;
+  animation: div-grow 2s;
   overflow: hidden;
 }
 
 @-webkit-keyframes div-grow {
   0%   { max-height: 0; }
-  100% { max-height: 250px; }
+  100% { max-height: 100px; }
 }
 @-moz-keyframes div-grow {
   0%   { max-height: 0; }
-  100% { max-height: 250px; }
+  100% { max-height: 100px; }
 }
+
 @-o-keyframes div-grow {
   0%   { max-height: 0; }
-  100% { max-height: 250px; }
+  100% { max-height: 100px; }
 }
 @keyframes div-grow {
   0%   { max-height: 0; }
-  100% { max-height: 250px; }
+  100% { max-height: 100px; }
 }
