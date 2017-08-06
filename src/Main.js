@@ -29,7 +29,7 @@ const Main = ({errors, form, submitForm, updateFormState, updateSearchType, card
         updateFormState={updateFormState}
         updateSearchType={updateSearchType}
       />
-      {errors ? <ErrorMessages errors={errors} /> : null}
+      { errors.length ? <ErrorMessages errors={errors} /> : null}
       <div className="row">
         <h5 className="header teal-text">{resultsText()}</h5>
         <h6>Last Updated: {typeof lastUpdatedLocal === "string" ? lastUpdatedLocal : "never"}</h6>
