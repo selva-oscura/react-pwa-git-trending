@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GitForm = ({form, submitForm, updateFormState, updateSearchType}) => {
+const GitForm = ({form, updateFormState, updateSearchType}) => {
   const buttonColour = buttonType => {
     return form.searchType === buttonType ? "btn waves-effect teal waves-light" : "btn waves-effect grey waves-teal"
   }
@@ -60,15 +60,6 @@ const GitForm = ({form, submitForm, updateFormState, updateSearchType}) => {
             Trending
           </button>
         </div>
-        <div className="col s12 m4 offset-m4">
-          <button
-            className="btn teal waves-effect waves-light"
-            type="submit"
-            onClick={submitForm}
-          >
-            Update<i className="material-icons right">send</i>
-          </button>
-        </div>
      </form>
     </div>
   );
@@ -76,7 +67,6 @@ const GitForm = ({form, submitForm, updateFormState, updateSearchType}) => {
 
 GitForm.propTypes = {
   form: PropTypes.object.isRequired,
-  submitForm: PropTypes.func.isRequired,
   updateFormState: PropTypes.func.isRequired,
   updateSearchType: PropTypes.func.isRequired,
 };
