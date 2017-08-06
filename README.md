@@ -14,6 +14,7 @@ Basic idea, UI, and images cribbed from Chris Nwamba&apos;s &ldquo;Build a Progr
 
 Changes made:
 * Project made with React, bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
+* Used [axios](https://www.npmjs.com/package/axios), not fetch, for queries
 * Additional query options (top v. trending, main language, keywords)
 * Changed query to being triggered on click for Top/Trending/Refresh and after debounced changes to Keywords and Language text inputs (used [throttle-debounce](https://www.npmjs.com/package/throttle-debounce)) and removed submit button
 
@@ -25,8 +26,8 @@ Changes remaining to be made:
 * add project screenshot and display on README
 
 Useful links for queries to the GitHub API:
-[REST API v3 Getting Started](https://developer.github.com/v3/guides/getting-started/)
-[Search Rest API v3](https://developer.github.com/v3/search/)
-[Understanding the Search Syntax](https://help.github.com/articles/understanding-the-search-syntax/)
-[Searching Repositories](https://help.github.com/articles/searching-repositories/)
-[html encoding reference](http://krypted.com/utilities/html-encoding-reference/)
+* [REST API v3 Getting Started](https://developer.github.com/v3/guides/getting-started/)
+* [Search Rest API v3](https://developer.github.com/v3/search/)
+* [Understanding the Search Syntax](https://help.github.com/articles/understanding-the-search-syntax/)
+* [Searching Repositories](https://help.github.com/articles/searching-repositories/)
+* [html encoding reference](http://krypted.com/utilities/html-encoding-reference/)
