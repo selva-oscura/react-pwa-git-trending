@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './Nav.css';
 
-const Nav = ({submitForm}) => {
+const Nav = ({queryGitHub}) => {
   const handleClick = (e) => {
     document.getElementById('refresh').className = document.getElementById('refresh').className  + " rotate";
-    submitForm(e);
+    queryGitHub();
     setTimeout(() => {
       document.getElementById('refresh').className = document.getElementById('refresh').className.slice(0, -7);
     }, 2000)
@@ -30,7 +30,7 @@ const Nav = ({submitForm}) => {
 };
 
 Nav.propTypes = {
-  submitForm: PropTypes.func.isRequired,
+  queryGitHub: PropTypes.func.isRequired,
 }
 
 export default Nav;
