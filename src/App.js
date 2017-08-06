@@ -24,8 +24,6 @@ class App extends Component {
         language: '',
       },
       errors: [
-        "filler 1",
-        "error filler #2",
       ],
     };
     this.queryGitHub();
@@ -43,25 +41,17 @@ class App extends Component {
     api.queryGithub(form.searchType, form.searchTerm, form.language)
       .then((res) => {
         // console.log(err.request, err.response)
-        console.log('res', res)
         let results = res.data.items.slice(0,30);
         let parameters = Object.assign({}, form);
         let lastUpdated = new Date().getTime();
         let lastUpdatedLocal = this.localDateTime();
-        this.setState({lastSearch: { results, parameters, lastUpdated, lastUpdatedLocal } });
+        this.setState({lastSearch: { results, parameters, lastUpdated, lastUpdatedLocal }, errors: [] });
       }).catch((err)=> {
         console.log('unable to access git', err);
-        if(String(err) === "Error: Network Error"){
-          console.log('matches expected no internet error -- stringified')
-        }
-        console.log(Object.keys(err), Object.values(err));
-        console.log(err.config);
-        console.log(err.request);
-        console.log(err.response);
-        console.log(err.message);
         if(err.message==="Network Error"){
           let errors = this.state.errors;
-          errors.push("You appear to be offline.", "Please check your internet connection.")
+          errors.push("You appear to be offline.", "Please check your internet connection.");
+          this.setState({errors});
         }
       });
   }
