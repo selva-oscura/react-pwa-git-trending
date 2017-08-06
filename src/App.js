@@ -53,12 +53,21 @@ class App extends Component {
         let lastUpdatedLocal = this.localDateTime();
         this.setState({lastSearch: { results, parameters, lastUpdated, lastUpdatedLocal }, errors: [] });
       }).catch((err)=> {
-        console.log('unable to access git', err);
-        if(err.message==="Network Error"){
-          let errors = this.state.errors;
+        let errors = this.state.errors;
+        console.log('unable to access git', typeof err, err, '\n', String(err));
+        Object.keys(err).forEach((key)=>{console.log(key, err[key])});
+        console.log(Object.values(err));
+        console.log('err.response.data.message',err.response.data.message);
+        if (err.message==="Network Error") {
           errors.push("You appear to be offline.", "Please check your internet connection.");
-          this.setState({errors});
+        }else if (err.response.data.message.includes("API rate limit exceeded")) {
+          errors.push("I'm sorry, but GitHub is rate limited and the limit has been exceeded.", "Please wait a minute before resubmitting the query.");
+        } else if (err.response.data.message) {
+          errors.push(err.response.data.message);
+        } else {
+          errors.push(String(err));
         }
+        this.setState({errors});
       });
   }
   debounceQueryGitHub(){
