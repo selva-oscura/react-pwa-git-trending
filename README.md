@@ -21,7 +21,8 @@ Changes remaining to be made:
 * add Redux (overkill for so small a project, but good practice for me)
 * store state to localStorage
 * apply masonry to cards
-* deploy to github pages
+* deploy to github pages and add link to github repo
+* add project screenshot and display on README
 
 Useful links for queries to the GitHub API:
 [REST API v3 Getting Started](https://developer.github.com/v3/guides/getting-started/)
