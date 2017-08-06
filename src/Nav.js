@@ -6,7 +6,7 @@ const Nav = ({submitForm}) => {
   const handleClick = (e) => {
     document.getElementById('refresh').className = document.getElementById('refresh').className  + " rotate";
     submitForm(e);
-    let endRotation = setTimeout(() => {
+    setTimeout(() => {
       document.getElementById('refresh').className = document.getElementById('refresh').className.slice(0, -7);
     }, 2000)
   }
