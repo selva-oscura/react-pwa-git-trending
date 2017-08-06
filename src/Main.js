@@ -4,7 +4,7 @@ import GitForm from './GitForm';
 import ErrorMessages from './ErrorMessages';
 import Card from './Card';
 
-const Main = ({errors, form, submitForm, updateFormState, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
+const Main = ({errors, form, updateFormState, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
   const resultsText = () => {
     let text = `${lastSearchParameters.searchType} results`;
     if(lastSearchParameters.keyWords || lastSearchParameters.language){
@@ -29,7 +29,6 @@ const Main = ({errors, form, submitForm, updateFormState, updateSearchType, card
     <main className="Main container">
       <GitForm
         form={form}
-        submitForm={submitForm}
         updateFormState={updateFormState}
         updateSearchType={updateSearchType}
       />
@@ -61,7 +60,6 @@ const Main = ({errors, form, submitForm, updateFormState, updateSearchType, card
 Main.propTypes = {
   errors: PropTypes.array,
   form: PropTypes.object.isRequired,
-  submitForm: PropTypes.func.isRequired,
   updateFormState: PropTypes.func.isRequired,
   updateSearchType: PropTypes.func.isRequired,
   cards: PropTypes.array.isRequired,
