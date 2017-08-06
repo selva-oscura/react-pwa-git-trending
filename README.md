@@ -17,6 +17,11 @@ Changes made:
 * Additional query options (top v. trending, main language, keywords)
 * Changed query to being triggered on click for Top/Trending/Refresh and after debounced changes to Keywords and Language text inputs (used [throttle-debounce](https://www.npmjs.com/package/throttle-debounce)) and removed submit button
 
+Changes remaining to be made:
+* add Redux (overkill for so small a project, but good practice for me)
+* store state to localStorage
+* apply masonry to cards
+* deploy to github pages
 
 Useful links for queries to the GitHub API:
 [REST API v3 Getting Started](https://developer.github.com/v3/guides/getting-started/)
