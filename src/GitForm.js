@@ -10,57 +10,59 @@ const GitForm = ({form, updateFormState, updateSearchType}) => {
     updateSearchType(e.target.id)
   };
   return (
-    <div className="GitForm row">
-      <form>
-        <div
-          className="col s12 m6"
-        >
-          <label htmlFor="keyWords">Keyword(s)
-            <input
-              className="active"
-              type="text"
-              id="keyWords"
-              value={form.keyWords}
-              onChange={updateFormState}
-            />
-          </label>
-        </div>
-        <div
-          className="col s12 m6"
-        >
-          <label htmlFor="language">Language
-            <input
-              className="active"
-              type="text"
-              id="language"
-              value={form.language}
-              onChange={updateFormState}
-            />
-          </label>
-        </div>
-        <div
-          className="col s6"
-        >
-          <button
-            className={buttonColour('top')}
-            id="top"
-            onClick={handleClick}
+    <div className="GitForm section">
+      <div className="row">
+        <form>
+          <div
+            className="col s12 m6"
           >
-            Top
-          </button>
-        </div>
-        <div
-          className="col s6"
-        >
-          <button
-            className={buttonColour('trending')}
-            id="trending"
-            onClick={handleClick}
+            <label htmlFor="keyWords">Keyword(s)
+              <input
+                className="active"
+                type="text"
+                id="keyWords"
+                value={form.keyWords}
+                onChange={updateFormState}
+              />
+            </label>
+          </div>
+          <div
+            className="col s12 m6"
           >
-            Trending
-          </button>
-        </div>
-     </form>
+            <label htmlFor="language">Language
+              <input
+                className="active"
+                type="text"
+                id="language"
+                value={form.language}
+                onChange={updateFormState}
+              />
+            </label>
+          </div>
+          <div
+            className="col s6"
+          >
+            <button
+              className={buttonColour('top')}
+              id="top"
+              onClick={handleClick}
+            >
+              Top
+            </button>
+          </div>
+          <div
+            className="col s6"
+          >
+            <button
+              className={buttonColour('trending')}
+              id="trending"
+              onClick={handleClick}
+            >
+              Trending
+            </button>
+          </div>
+       </form>
+      </div>
     </div>
   );
 };
