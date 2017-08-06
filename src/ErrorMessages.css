@@ -5,6 +5,7 @@
   -o-animation: div-grow 2s;
   animation: div-grow 2s;
   overflow: hidden;
+  padding: 0 .75rem;
 }
 
 @-webkit-keyframes div-grow {
