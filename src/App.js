@@ -40,8 +40,11 @@ class App extends Component {
     let form = this.state.form;
     api.queryGithub(form.searchType, form.searchTerm, form.language)
       .then((res) => {
-        // console.log(err.request, err.response)
-        let results = res.data.items.slice(0,30);
+        let results = res.data.items.map((item) => {
+          const {full_name, language, stargazers_count, forks_count, description, html_url} = item;
+          return {full_name, language, stargazers_count, forks_count, description, html_url};
+          }
+        );
         let parameters = Object.assign({}, form);
         let lastUpdated = new Date().getTime();
         let lastUpdatedLocal = this.localDateTime();
@@ -72,7 +75,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Nav />
+        <Nav
+          submitForm={this.submitForm}
+        />
         <Main
           errors={this.state.errors}
           form={this.state.form}
