@@ -28,8 +28,8 @@ class App extends Component {
       errors: [
       ],
     };
-    this.queryGitHub = debounce(500, this.queryGitHub);
-    this.submitForm = this.submitForm.bind(this);
+    this.queryGitHub();
+    this.debounceQueryGitHub = debounce(500, this.debounceQueryGitHub);
     this.updateFormState = this.updateFormState.bind(this);
     this.updateSearchType = this.updateSearchType.bind(this);
   }
@@ -40,7 +40,7 @@ class App extends Component {
   }
   queryGitHub(){
     let form = this.state.form;
-    api.queryGithub(form.searchType, form.keyWords, form.language)
+    api.queryGitHub(form.searchType, form.keyWords, form.language)
       .then((res) => {
         let results = res.data.items.map((item) => {
           const {full_name, language, stargazers_count, forks_count, description, html_url} = item;
@@ -60,11 +60,14 @@ class App extends Component {
         }
       });
   }
+  debounceQueryGitHub(){
+    this.queryGitHub();
+  }
   updateFormState(e){
     let form = this.state.form;
     form[e.target.id] = e.target.value;
     this.setState({ form });
-    this.queryGitHub();
+    this.debounceQueryGitHub();
   }
   updateSearchType(searchType){
     let form = this.state.form;
@@ -72,20 +75,15 @@ class App extends Component {
     this.setState({ form });
     this.queryGitHub();
   }
-  submitForm(e){
-    e.preventDefault();
-    this.queryGitHub();
-  }
   render() {
     return (
       <div className="App">
         <Nav
-          submitForm={this.submitForm}
+          queryGitHub={this.queryGitHub}
         />
         <Main
           errors={this.state.errors}
           form={this.state.form}
-          submitForm={this.submitForm}
           updateFormState={this.updateFormState}
           updateSearchType={this.updateSearchType}
           cards={this.state.lastSearch.results}
