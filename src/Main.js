@@ -7,13 +7,17 @@ import Card from './Card';
 const Main = ({errors, form, submitForm, updateFormState, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
   const resultsText = () => {
     let text = `${lastSearchParameters.searchType} results`;
-    if(lastSearchParameters.searchTerm || lastSearchParameters.language){
+    if(lastSearchParameters.keyWords || lastSearchParameters.language){
       text += " for ";
     }
-    if(lastSearchParameters.searchTerm){
-      text += `keywords: ${lastSearchParameters.searchTerm}`;
+    if(lastSearchParameters.keyWords){
+      text += "keyword";
+      if(lastSearchParameters.keyWords.includes(' ')){
+        text+="s";
+      }
+      text += `: ${lastSearchParameters.keyWords}`;
     }
-    if(lastSearchParameters.searchTerm && lastSearchParameters.language){
+    if(lastSearchParameters.keyWords && lastSearchParameters.language){
       text += " and ";
     }
     if(lastSearchParameters.language){
