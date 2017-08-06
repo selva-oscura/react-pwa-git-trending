@@ -28,10 +28,11 @@ class App extends Component {
       errors: [
       ],
     };
-    this.queryGitHub();
+    this.queryGitHub = this.queryGitHub.bind(this);
     this.debounceQueryGitHub = debounce(500, this.debounceQueryGitHub);
     this.updateFormState = this.updateFormState.bind(this);
     this.updateSearchType = this.updateSearchType.bind(this);
+    this.queryGitHub();
   }
   localDateTime(){
     const now = new Date();
