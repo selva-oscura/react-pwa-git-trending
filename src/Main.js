@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import GitForm from './GitForm';
-import Errors from './Errors';
+import ErrorMessages from './ErrorMessages';
 import Card from './Card';
 
 const Main = ({errors, form, submitForm, updateFormState, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
@@ -29,7 +29,7 @@ const Main = ({errors, form, submitForm, updateFormState, updateSearchType, card
         updateFormState={updateFormState}
         updateSearchType={updateSearchType}
       />
-      {errors ? <Errors errors={errors} /> : null}
+      {errors ? <ErrorMessages errors={errors} /> : null}
       <div className="row">
         <h5 className="header teal-text">{resultsText()}</h5>
         <h6>Last Updated: {typeof lastUpdatedLocal === "string" ? lastUpdatedLocal : "never"}</h6>

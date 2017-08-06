@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Error = ({error}) => {
+const ErrorMessage = ({error}) => {
 	return (
 		<span
 			className="col s12 red darken-4"
@@ -10,4 +10,4 @@ const Error = ({error}) => {
 	)
 }
 
-export default Error;
+export default ErrorMessage;
