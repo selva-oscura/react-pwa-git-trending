@@ -2,9 +2,7 @@ import React from 'react';
 
 const ErrorMessage = ({error}) => {
 	return (
-		<span
-			className="col s12 red darken-4"
-		>
+		<span>
 			{error}<br/>
 		</span>
 	)
