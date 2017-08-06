@@ -15,12 +15,12 @@ const GitForm = ({form, submitForm, updateFormState, updateSearchType}) => {
         <div
           className="col s12 m6"
         >
-          <label htmlFor="searchTerm">Search Term(s)
+          <label htmlFor="keyWords">Keyword(s)
             <input
               className="active"
               type="text"
-              id="searchTerm"
-              value={form.searchTerm}
+              id="keyWords"
+              value={form.keyWords}
               onChange={updateFormState}
             />
           </label>

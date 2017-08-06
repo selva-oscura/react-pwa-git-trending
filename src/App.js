@@ -12,7 +12,7 @@ class App extends Component {
         results: [],
         parameters: {
           searchType: 'top',
-          searchTerm: '',
+          keyWords: '',
           language: '',
         },
         lastUpdated: -Infinity,
@@ -20,7 +20,7 @@ class App extends Component {
       },
       form: {
         searchType: 'top',
-        searchTerm: '',
+        keyWords: '',
         language: '',
       },
       errors: [
@@ -38,7 +38,7 @@ class App extends Component {
   }
   queryGitHub(){
     let form = this.state.form;
-    api.queryGithub(form.searchType, form.searchTerm, form.language)
+    api.queryGithub(form.searchType, form.keyWords, form.language)
       .then((res) => {
         let results = res.data.items.map((item) => {
           const {full_name, language, stargazers_count, forks_count, description, html_url} = item;
