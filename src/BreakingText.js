@@ -13,7 +13,12 @@ const BreakingText = ({text}) => {
   possibleBreakPoints[possibleBreakPoints.length-1].push(text.length);
   return (
     <span>
-      {possibleBreakPoints.map((sections)=>(<span>{text.slice(sections[0],sections[1])}<wbr /></span>))}
+      {possibleBreakPoints.map((sections, i)=>(
+        <span
+          key={i}
+        >{text.slice(sections[0],sections[1])}<wbr />
+        </span>
+        ))}
     </span>
   );
 };
