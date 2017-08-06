@@ -18,15 +18,21 @@ const api = {
     if(keyWords){
       apiCall += `%20${keyWords.split(" ").join("+")}`;
     }
+
     if(language){
-      apiCall += `%20language:${language}`;
+      if (keyWords) {
+        apiCall += "&";
+      } else {
+        apiCall += "%20";
+      }
+      apiCall += `language:${language}`;
     }
     // fallback query for no dates, no keyWords, & no language, GitHub API requires SOME query parameter
     if(searchType === "top" && !keyWords && !language){
       apiCall += 'stars:>25000';
     }
     apiCall += '&sort=stars&order=desc';
-    // console.log('apiCall', apiCall);
+    console.log('apiCall', apiCall);
     return axios
       .get(apiCall)
       .then((response) => {
