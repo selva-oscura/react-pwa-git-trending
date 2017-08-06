@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './Nav.css';
 
 const Nav = ({submitForm}) => {
@@ -27,5 +28,9 @@ const Nav = ({submitForm}) => {
     </nav>
   );
 };
+
+Nav.propTypes = {
+  submitForm: PropTypes.func.isRequired,
+}
 
 export default Nav;
