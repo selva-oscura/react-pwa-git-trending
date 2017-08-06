@@ -10,9 +10,12 @@ const Card = ({title, lang, starCount, forkCount, description, link}) => {
         <div className="card-stacked">
           <div className="card-content white-text">
             <span className="card-title">
-              <BreakingText
-                text={title}
-              />
+            { title ? (
+                <BreakingText
+                  text={title}
+                />
+              ) : null
+            }
             </span>
             <div className="card-sub grey-text text-lighten-2">
               <i className="material-icons">info</i><span className="card-lang"> {lang}</span>
@@ -20,9 +23,13 @@ const Card = ({title, lang, starCount, forkCount, description, link}) => {
               <i className="material-icons">assessment</i><span className="card-forks"> {forkCount}</span>
             </div>
             <p>
-              <BreakingText
-                text={description}
-              />
+              {
+                description ? (
+                  <BreakingText
+                    text={description}
+                  />
+                ) : null
+              }
             </p>
           </div>
           <div className="card-action">
