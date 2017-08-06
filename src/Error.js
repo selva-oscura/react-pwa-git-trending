@@ -3,9 +3,9 @@ import React from 'react';
 const Error = ({error}) => {
 	return (
 		<span
-			className="red darken-4"
+			className="col s12 red darken-4"
 		>
-			error here<br/>
+			{error}<br/>
 		</span>
 	)
 }
