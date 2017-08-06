@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { debounce } from 'throttle-debounce';
 import './App.css';
 import api from './api';
 import Nav from './Nav';
 import Main from './Main';
+
 
 class App extends Component {
   constructor(props){
@@ -26,7 +28,7 @@ class App extends Component {
       errors: [
       ],
     };
-    this.queryGitHub();
+    this.queryGitHub = debounce(500, this.queryGitHub);
     this.submitForm = this.submitForm.bind(this);
     this.updateFormState = this.updateFormState.bind(this);
     this.updateSearchType = this.updateSearchType.bind(this);
@@ -62,11 +64,13 @@ class App extends Component {
     let form = this.state.form;
     form[e.target.id] = e.target.value;
     this.setState({ form });
+    this.queryGitHub();
   }
   updateSearchType(searchType){
     let form = this.state.form;
     form.searchType = searchType;
     this.setState({ form });
+    this.queryGitHub();
   }
   submitForm(e){
     e.preventDefault();
