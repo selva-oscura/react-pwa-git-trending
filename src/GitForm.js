@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const GitForm = ({form, updateFormState, updateSearchType}) => {
   const buttonColour = buttonType => {
-    return form.searchType === buttonType ? "btn waves-effect teal waves-light" : "btn waves-effect grey waves-teal"
+    return form.searchType === buttonType ? "col s10 offset-s1 m8 offset-m2 btn waves-effect teal waves-light" : "btn col s10 offset-s1 m8 offset-m2 waves-effect grey waves-teal"
   }
   const handleClick = (e) => {
     e.preventDefault();
@@ -39,7 +39,7 @@ const GitForm = ({form, updateFormState, updateSearchType}) => {
           </label>
         </div>
         <div
-          className="col s6 m2"
+          className="col s6"
         >
           <button
             className={buttonColour('top')}
@@ -50,7 +50,7 @@ const GitForm = ({form, updateFormState, updateSearchType}) => {
           </button>
         </div>
         <div
-          className="col s6 m2"
+          className="col s6"
         >
           <button
             className={buttonColour('trending')}
