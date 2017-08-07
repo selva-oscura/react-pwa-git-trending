@@ -11,10 +11,10 @@ const api = {
 	// github
   queryGitHub: function(searchType, keyWords, language){
     let apiCall = "https://api.github.com/search/repositories?q=";
-    if(keyWords){
+    if (keyWords) {
       apiCall += `${keyWords.split(" ").join("+")}`;
     }
-    if(language){
+    if (language) {
       // apiCall += "&";
       if (keyWords) {
         apiCall += "%20";
@@ -23,7 +23,7 @@ const api = {
       }
       apiCall += `language:${language}`;
     }
-    if(searchType === "trending"){
+    if (searchType && searchType === "trending") {
       let dates = this.getDates();
       if(keyWords || language){
         apiCall += "%20"        
@@ -32,7 +32,7 @@ const api = {
     }
 
     // fallback query for no dates, no keyWords, & no language, GitHub API requires SOME query parameter
-    if(searchType === "top" && !keyWords && !language){
+    if ((!searchType || searchType === "top") && !keyWords && !language){
       apiCall += 'stars:%3E25000';
     }
     apiCall += '&sort=stars&order=desc';
