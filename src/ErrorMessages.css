@@ -1,12 +1,24 @@
-.ErrorMessages{
+#ErrorMessages {
+  overflow: hidden;
+  padding: 0 .75rem;
+}
+
+#ErrorMessages.display-error {
   -webkit-animation: div-grow 2s;
   -moz-animation: div-grow 2s;
   -ms-animation: div-grow 2s;
   -o-animation: div-grow 2s;
   animation: div-grow 2s;
-  overflow: hidden;
-  padding: 0 .75rem;
 }
+
+#ErrorMessages.remove-error {
+  -webkit-animation: div-shrink 1s;
+  -moz-animation: div-shrink 1s;
+  -ms-animation: div-shrink 1s;
+  -o-animation: div-shrink 1s;
+  animation: div-shrink 1s;
+}
+
 
 @-webkit-keyframes div-grow {
   0%   { max-height: 0; }
@@ -24,4 +36,22 @@
 @keyframes div-grow {
   0%   { max-height: 0; }
   100% { max-height: 100px; }
+}
+
+@-webkit-keyframes div-shrink {
+  0%   { max-height: 100px; }
+  100% { max-height: 0; }
+}
+@-moz-keyframes div-shrink {
+  0%   { max-height: 100px; }
+  100% { max-height: 0; }
+}
+
+@-o-keyframes div-shrink {
+  0%   { max-height: 100px; }
+  100% { max-height: 0; }
+}
+@keyframes div-shrink {
+  0%   { max-height: 100px; }
+  100% { max-height: 0; }
 }
