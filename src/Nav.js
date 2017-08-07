@@ -8,7 +8,6 @@ const Nav = ({queryGitHub}) => {
     refresh.className = refresh.className  + " rotate";
     queryGitHub();
     setTimeout(() => {
-      let refresh = document.getElementById('refresh');
       refresh.className = refresh.className.slice(0, -7);
     }, 2000)
   }
