@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { debounce } from 'throttle-debounce';
 import './App.css';
-import api from './api';
+import api from '../api/api.js';
 import Nav from './Nav';
 import Main from './Main';
 
