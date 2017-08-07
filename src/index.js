@@ -5,8 +5,12 @@ import configureStore from './store/configureStore';
 import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
+import { loadRepos } from './actions/repoActions';
+
 
 const store = configureStore();
+
+store.dispatch(loadRepos());
 
 ReactDOM.render(
 	<Provider store={store}>
