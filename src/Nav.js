@@ -4,10 +4,12 @@ import './Nav.css';
 
 const Nav = ({queryGitHub}) => {
   const handleClick = (e) => {
-    document.getElementById('refresh').className = document.getElementById('refresh').className  + " rotate";
+    let refresh = document.getElementById('refresh');
+    refresh.className = refresh.className  + " rotate";
     queryGitHub();
     setTimeout(() => {
-      document.getElementById('refresh').className = document.getElementById('refresh').className.slice(0, -7);
+      let refresh = document.getElementById('refresh');
+      refresh.className = refresh.className.slice(0, -7);
     }, 2000)
   }
   return (
