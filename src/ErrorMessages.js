@@ -5,7 +5,7 @@ import ErrorMessage from './ErrorMessage';
 
 const ErrorMessages = ({errors}) => {
 	return (
-		<div className="ErrorMessages row">
+		<div id="ErrorMessages" className="row display-error">
 			<div className="col s12 red darken-4">
 				<p className="white-text">
 					{errors.map((error, i) => <ErrorMessage key={i} error={error} />)}
