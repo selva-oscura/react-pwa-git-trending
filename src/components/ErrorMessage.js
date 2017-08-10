@@ -6,8 +6,8 @@ const ErrorMessage = ({error}) => {
 		<span>
 			{error}<br/>
 		</span>
-	)
-}
+	);
+};
 
 ErrorMessage.propTypes = {
   error: PropTypes.string.isRequired,

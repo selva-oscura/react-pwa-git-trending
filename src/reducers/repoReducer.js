@@ -9,4 +9,4 @@ export default function repoReducer(state = initialState.repos, action) {
 		default:
 			return state;
 	}
-}
+};
