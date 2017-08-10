@@ -3,12 +3,13 @@ import PropTypes from 'prop-types';
 import './ErrorMessages.css';
 import ErrorMessage from './ErrorMessage';
 
-const ErrorMessages = ({errors}) => {
+const ErrorMessages = ({errorMessages, errorRemovalInProgress}) => {
+	let errorClass = errorRemovalInProgress ? "row remove-error" : "row display-error";
 	return (
-		<div id="ErrorMessages" className="row display-error">
+		<div id="ErrorMessages" className={errorClass}>
 			<div className="col s12 red darken-4">
 				<p className="white-text">
-					{errors.map((error, i) => <ErrorMessage key={i} error={error} />)}
+					{ errorMessages.map((error, i) => <ErrorMessage key={i} error={error} />) }
 				</p>
 			</div>
 		</div>
@@ -16,7 +17,8 @@ const ErrorMessages = ({errors}) => {
 }
 
 ErrorMessages.propTypes = {
-  errors: PropTypes.array.isRequired,
+  errorMessages: PropTypes.array.isRequired,
+  errorRemovalInProgress: PropTypes.bool,
 };
 
 export default ErrorMessages;
