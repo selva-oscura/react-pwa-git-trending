@@ -22,11 +22,11 @@ const Cards = ({cards}) => {
         )}
       </div>
     </div>
-	)
-}
+	);
+};
 
 Cards.propTypes = {
 	cards: PropTypes.array,
-}
+};
 
 export default Cards;
