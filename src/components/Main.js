@@ -15,7 +15,7 @@ const Main = ({errors, form, updateFormState, updateSearchType, cards, lastSearc
         updateSearchType={updateSearchType}
       />
 
-      { errors.length ? <ErrorMessages errors={errors} /> : null}
+      { errors.messages.length ? <ErrorMessages errorMessages={errors.messages} errorRemovalInProgress={errors.removalInProgress} /> : null}
       
       <SearchSummary
         lastSearchParameters={lastSearchParameters}
@@ -32,7 +32,7 @@ const Main = ({errors, form, updateFormState, updateSearchType, cards, lastSearc
 };
 
 Main.propTypes = {
-  errors: PropTypes.array,
+  errors: PropTypes.object.isRequired,
   form: PropTypes.object.isRequired,
   updateFormState: PropTypes.func.isRequired,
   updateSearchType: PropTypes.func.isRequired,
