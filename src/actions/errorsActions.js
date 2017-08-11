@@ -1,15 +1,15 @@
 import * as types from './actionTypes';
-import api from '../api/api';
 
 export function updateErrorsSuccess(errors) {
 	return { type: types.UPDATE_ERRORS_SUCCESS, errors};
 }
 
 export function updateErrors(errors) {
+	console.log("ERRORS", errors);
 	return function(dispatch) {
-		let hardCodedErrors = ['filler errors', 'the joys of testing'];
+		let {messages} = errors;
 		dispatch(updateErrorsSuccess({
-			messages: hardCodedErrors,
+			messages: messages,
 			removalInProgress: false,
 		}));
 	};
