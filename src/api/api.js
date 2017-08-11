@@ -9,17 +9,14 @@ const api = {
   },
 
 	// github
-  queryGitHub: function(searchType, keyWords, language){
+  queryGitHub: function(searchType = "top", keyWords = "", language = ""){
     let apiCall = "https://api.github.com/search/repositories?q=";
     if (keyWords) {
       apiCall += `${keyWords.split(" ").join("+")}`;
     }
     if (language) {
-      // apiCall += "&";
       if (keyWords) {
         apiCall += "%20";
-      // } else {
-      //   apiCall += "%20";
       }
       apiCall += `language:${language}`;
     }
@@ -36,14 +33,15 @@ const api = {
       apiCall += 'stars:%3E25000';
     }
     apiCall += '&sort=stars&order=desc';
-    console.log('apiCall', apiCall);
+    // console.log('apiCall from inside the api call', apiCall);
     return axios
       .get(apiCall)
       .then((response) => {
-        // console.log('api.queryGitHub response', response);
+        console.log('api.queryGitHub response', response);
         return response;
       })
       .catch((error) => {
+        console.log("error from inside api.queryGitHub", error);
         // console.log('api.queryGitHub error', error);
         throw error;
       });
