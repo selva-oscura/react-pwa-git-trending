@@ -5,7 +5,6 @@ import { bindActionCreators } from 'redux';
 import * as repoActions from '../actions/repoActions';
 import * as errorsActions from '../actions/errorsActions';
 import './App.css';
-import api from '../api/api.js';
 import Nav from './Nav';
 import Main from './Main';
 
@@ -14,97 +13,77 @@ class App extends Component {
     super(props, context);
     this.queryGitHub = this.queryGitHub.bind(this);
     this.debounceQueryGitHub = debounce(500, this.debounceQueryGitHub);
-    this.updateFormState = this.updateFormState.bind(this);
+    this.updateSearchTextInput = this.updateSearchTextInput.bind(this);
     this.updateSearchType = this.updateSearchType.bind(this);
     // console.log('this.props.children', this.props.children);
     // console.log('props.children', props.children);
     // console.log('this.state', this.state)
   }
+  delay(t){
+    console.log('hitting delay (setTimeout)');
+    return new Promise((resolve) => {
+      setTimeout(resolve, t)
+    });
+  }
   queryGitHub(){
-    let searchForm = this.state.searchForm || {searchType: undefined, keyWords: "", language: ""};
-    api.queryGitHub(searchForm.searchType, searchForm.keyWords, searchForm.language)
-      .then((res) => {
-        // if(res.data){
-        //   console.log('total count:', res.data.total_count);
-        // }
-        let results = res.data.items.map((item) => {
-          const {full_name, language, stargazers_count, forks_count, description, html_url} = item;
-          return {full_name, language, stargazers_count, forks_count, description, html_url};
-          }
-        );
-          // let parameters = Object.assign({}, form);
-          // this.setState({searchForm: { results, parameters }});
-        let error_messages = document.getElementById('ErrorMessages');
-        if (error_messages) {
-          error_messages.className = error_messages.className.slice(0, -13) + " remove-error";
-        }
-        setTimeout(() => {
-          this.setState({ errors: [] });
-        }, 2000)
-      }).catch((err)=> {
-        let errors = [];
-        console.log('unable to access git', typeof err, err, '\n', String(err));
-        if (err.message==="Network Error") {
-          errors.push("You appear to be offline.", "Please check your internet connection.");
-        }else if (err.response.data.message.includes("API rate limit exceeded")) {
-          errors.push("I'm sorry, but GitHub is rate limited and the limit has been exceeded.", "Please wait a minute before resubmitting the query.");
-        } else if (err.response && err.response.data.message) {
-          errors.push(err.response.data.message);
-        } else {
-          errors.push(String(err));
-        }
-        this.setState({errors});
-      });
+    let { searchType, keyWords, language } = this.props.state.searchForm;
+    console.log('in queryGitHub');
+    this.props.actions.repoActions.loadRepos(
+      searchType, keyWords, language
+    ).then(res => {
+      let errors = this.props.state.errors;
+      let now = Math.floor(new Date().getTime()/1000);
+      console.log("TICK at", now);
+      this.props.actions.errorsActions.clearErrorsDisplay(errors);
+    }).then(res => {
+      this.delay(1000).then(() => {
+        let now = Math.floor(new Date().getTime()/1000);
+        console.log("TOCK at", now);
+        this.props.actions.errorsActions.deleteErrors();
+      })
+    })
+    .catch(error => {
+      console.log("error from queryGithub in App.js", error);
+      let messages = [];
+      if (error.message==="Network Error") {
+        messages.push("You appear to be offline.", "Please check your internet connection.");
+      }else if (error.response && error.response.data && error.response.data.message.includes("API rate limit exceeded")) {
+        messages.push("I'm sorry, but GitHub is rate limited and the limit has been exceeded.", "Please wait a minute before resubmitting the query.");
+      } else if (error.response && error.response.data && error.response.data.message) {
+        messages.push(error.response.data.message);
+      } else {
+        messages.push(String(error));
+      }
+      let errors = {
+       messages: messages,
+       removalInProgress: false,
+      }
+      this.props.actions.errorsActions.updateErrors(errors);
+    });
   }
   debounceQueryGitHub(){
+    console.log('debouncing');
     this.queryGitHub();
   }
-  updateFormState(e){
+  updateSearchTextInput(e){
+    console.log('in updateFormState');
     let searchForm = this.state.searchForm;
     searchForm[e.target.id] = e.target.value;
     this.setState({ searchForm });
     this.debounceQueryGitHub();
   }
   updateSearchType(searchType){
+    console.log('in updateSearchType');
     let searchForm = this.state.searchForm;
     searchForm.searchType = searchType;
     this.setState({ searchForm });
     this.queryGitHub();
   }
   componentWillMount(){
-    console.log('lastUpdated', this.props.state.repos.lastUpdated)
+    console.log('lastUpdated', this.props.state.repos.lastUpdated);
     if(typeof this.props.state.repos.lastUpdated === "number"){
-      this.props.actions.repoActions.loadRepos()
-        .then(res => {
-          console.log('res from componentWillMount', res)
-          dispatch(updateErrorsSuccess({
-           removalInProgress: true,
-          }));
-          setTimeout(() => {
-           dispatch(updateErrorsSuccess({
-             removalInProgress: false, 
-             messages: [],
-           }))
-          }, 2000);
-        })
-        .catch(error => {
-          console.log('err from componentWillMount -- unable to access git', typeof error, error, '\n', String(error));
-          let messages = [];
-          if (error.message==="Network Error") {
-            messages.push("You appear to be offline.", "Please check your internet connection.");
-          }else if (error.response.data.message.includes("API rate limit exceeded")) {
-            messages.push("I'm sorry, but GitHub is rate limited and the limit has been exceeded.", "Please wait a minute before resubmitting the query.");
-          } else if (error.response && error.response.data.message) {
-            messages.push(error.response.data.message);
-          } else {
-            messages.push(String(error));
-          }
-          let errors = {
-           messages: messages,
-           removalInProgress: false,            
-          }
-          this.props.actions.errorsActions.updateErrors(errors);
-        });
+      console.log("calling this.queryGitHub from inside component will mount");
+      this.queryGitHub();
     }
   }
   render() {
@@ -119,7 +98,7 @@ class App extends Component {
         <Main
           errors={state.errors}
           form={state.searchForm}
-          updateFormState={this.updateFormState}
+          updateSearchTextInput={this.updateSearchTextInput}
           updateSearchType={this.updateSearchType}
           cards={state.repos.items}
           lastSearchParameters={state.searchForm}
