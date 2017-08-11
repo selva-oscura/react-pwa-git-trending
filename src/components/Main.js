@@ -5,13 +5,13 @@ import ErrorMessages from './ErrorMessages';
 import SearchSummary from './SearchSummary';
 import Cards from './Cards';
 
-const Main = ({errors, form, updateFormState, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
+const Main = ({errors, form, updateSearchTextInput, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
   return (
     <main className="Main container">
       
       <GitForm
         form={form}
-        updateFormState={updateFormState}
+        updateSearchTextInput={updateSearchTextInput}
         updateSearchType={updateSearchType}
       />
 
@@ -34,7 +34,7 @@ const Main = ({errors, form, updateFormState, updateSearchType, cards, lastSearc
 Main.propTypes = {
   errors: PropTypes.object.isRequired,
   form: PropTypes.object.isRequired,
-  updateFormState: PropTypes.func.isRequired,
+  updateSearchTextInput: PropTypes.func.isRequired,
   updateSearchType: PropTypes.func.isRequired,
   cards: PropTypes.array,
   lastUpdated: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),

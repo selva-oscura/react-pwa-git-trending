@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GitForm = ({form, updateFormState, updateSearchType}) => {
+const GitForm = ({form, updateSearchTextInput, updateSearchType}) => {
   const buttonColour = buttonType => {
     return form.searchType === buttonType ? "col s10 offset-s1 m8 offset-m2 btn waves-effect teal waves-light" : "btn col s10 offset-s1 m8 offset-m2 waves-effect grey waves-teal"
   }
@@ -22,7 +22,7 @@ const GitForm = ({form, updateFormState, updateSearchType}) => {
                 type="text"
                 id="keyWords"
                 value={form.keyWords}
-                onChange={updateFormState}
+                onChange={updateSearchTextInput}
               />
             </label>
           </div>
@@ -35,7 +35,7 @@ const GitForm = ({form, updateFormState, updateSearchType}) => {
                 type="text"
                 id="language"
                 value={form.language}
-                onChange={updateFormState}
+                onChange={updateSearchTextInput}
               />
             </label>
           </div>
@@ -69,7 +69,7 @@ const GitForm = ({form, updateFormState, updateSearchType}) => {
 
 GitForm.propTypes = {
   form: PropTypes.object.isRequired,
-  updateFormState: PropTypes.func.isRequired,
+  updateSearchTextInput: PropTypes.func.isRequired,
   updateSearchType: PropTypes.func.isRequired,
 };
 
