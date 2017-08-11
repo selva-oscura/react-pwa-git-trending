@@ -33,7 +33,7 @@ export function deleteErrorsSuccess(errors) {
 
 export function deleteErrors(errors) {
 	return function(dispatch) {
-		dispatch(updateErrorsSuccess({
+		dispatch(deleteErrorsSuccess({
 			messages: [],
 			removalInProgress: false,
 		}));
