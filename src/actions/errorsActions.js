@@ -14,3 +14,16 @@ export function updateErrors(errors) {
 		}));
 	};
 }
+
+export function clearErrorsDisplaySuccess() {
+	return { type: types.CLEAR_ERRORS_DISPLAY_SUCCESS};
+}
+
+export function clearErrorsDisplay() {
+	return function(dispatch) {
+		dispatch(clearErrorsDisplaySuccess({
+			removalInProgress: true,
+		}));
+	};
+}
+
