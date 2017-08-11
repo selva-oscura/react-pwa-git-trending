@@ -27,3 +27,15 @@ export function clearErrorsDisplay() {
 	};
 }
 
+export function deleteErrorsSuccess(errors) {
+	return { type: types.DELETE_ERRORS_SUCCESS, errors};
+}
+
+export function deleteErrors(errors) {
+	return function(dispatch) {
+		dispatch(updateErrorsSuccess({
+			messages: [],
+			removalInProgress: false,
+		}));
+	};
+}
