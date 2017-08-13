@@ -6,7 +6,7 @@ export default function errorsReducer(state = initialState.errors, action) {
 		case types.UPDATE_ERRORS_SUCCESS:
 		case types.CLEAR_ERRORS_DISPLAY_SUCCESS:
 		case types.DELETE_ERRORS_SUCCESS:
-			return action.errors;
+			return Object.assign({}, action.errors);
 		default:
 			return state;
 	}
