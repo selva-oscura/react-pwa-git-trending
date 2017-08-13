@@ -9,7 +9,7 @@ const api = {
   },
 
 	// github
-  queryGitHub: function(searchType = "top", keyWords = "", language = ""){
+  queryGitHub: function(searchType, keyWords, language){
     let apiCall = "https://api.github.com/search/repositories?q=";
     if (keyWords) {
       apiCall += `${keyWords.split(" ").join("+")}`;
