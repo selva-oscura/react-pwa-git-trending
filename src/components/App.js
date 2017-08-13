@@ -41,8 +41,7 @@ class App extends Component {
         console.log("TOCK at", now);
         this.props.actions.errorsActions.deleteErrors();
       })
-    })
-    .catch(error => {
+    }).catch(error => {
       console.log("error from queryGithub in App.js", error);
       let messages = [];
       if (error.message==="Network Error") {
@@ -78,13 +77,6 @@ class App extends Component {
     searchForm.searchType = searchType;
     this.setState({ searchForm });
     this.queryGitHub();
-  }
-  componentWillMount(){
-    console.log('lastUpdated', this.props.state.repos.lastUpdated);
-    if(typeof this.props.state.repos.lastUpdated === "number"){
-      console.log("calling this.queryGitHub from inside component will mount");
-      this.queryGitHub();
-    }
   }
   render() {
     const state = this.props.state;
