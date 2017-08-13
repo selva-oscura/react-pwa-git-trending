@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GitForm from './GitForm';
 import ErrorMessages from './ErrorMessages';
+import Loading from './Loading';
 import SearchSummary from './SearchSummary';
 import Cards from './Cards';
 
@@ -16,6 +17,8 @@ const Main = ({errors, searchForm, updateSearchTextInput, updateSearchType, card
       />
 
       { errors.messages && errors.messages.length ? <ErrorMessages errorMessages={errors.messages} errorRemovalInProgress={errors.removalInProgress} /> : null}
+
+      <Loading />
       
       <SearchSummary
         lastSearchParameters={lastSearchParameters}
