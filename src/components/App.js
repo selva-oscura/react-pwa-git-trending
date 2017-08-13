@@ -88,6 +88,7 @@ class App extends Component {
 
         <Main
           errors={state.errors}
+          ajaxCallsInProgress={state.ajaxCalls.callsInProgress}
           searchForm={state.searchForm}
           updateSearchTextInput={this.updateSearchTextInput}
           updateSearchType={this.updateSearchType}
