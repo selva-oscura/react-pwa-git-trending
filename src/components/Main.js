@@ -6,7 +6,7 @@ import Loading from './Loading';
 import SearchSummary from './SearchSummary';
 import Cards from './Cards';
 
-const Main = ({errors, searchForm, updateSearchTextInput, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
+const Main = ({errors, ajaxCallsInProgress, searchForm, updateSearchTextInput, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
   return (
     <main className="Main container">
       
@@ -17,13 +17,15 @@ const Main = ({errors, searchForm, updateSearchTextInput, updateSearchType, card
       />
 
       { errors.messages && errors.messages.length ? <ErrorMessages errorMessages={errors.messages} errorRemovalInProgress={errors.removalInProgress} /> : null}
-
-      <Loading />
       
       <SearchSummary
         lastSearchParameters={lastSearchParameters}
         lastUpdated={lastUpdated}
         lastUpdatedLocal={lastUpdatedLocal}
+      />
+
+      <Loading
+        ajaxCallsInProgress={ajaxCallsInProgress}
       />
 
       <Cards
@@ -36,6 +38,7 @@ const Main = ({errors, searchForm, updateSearchTextInput, updateSearchType, card
 
 Main.propTypes = {
   errors: PropTypes.object.isRequired,
+  ajaxCallsInProgress: PropTypes.bool.isRequired,
   searchForm: PropTypes.object.isRequired,
   updateSearchTextInput: PropTypes.func.isRequired,
   updateSearchType: PropTypes.func.isRequired,
