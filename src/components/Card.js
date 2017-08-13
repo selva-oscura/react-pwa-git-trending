@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import BreakingText from './BreakingText';
 import './Card.css';
 
-const Card = ({title, lang, starCount, forkCount, description, link}) => {
+const Card = ({title, language, starCount, forkCount, description, link}) => {
   return (
     <div className="col s12 m6 l4">
       <div className="card horizontal hoverable">
@@ -18,7 +18,7 @@ const Card = ({title, lang, starCount, forkCount, description, link}) => {
             }
             </span>
             <div className="card-sub grey-text text-lighten-2">
-              <span className="card-lang"><i className="material-icons">info</i>&nbsp;{lang || "Unspecified"}</span>
+              <span className="card-lang"><i className="material-icons">info</i>&nbsp;{language || "Unspecified"}</span>
               <span className="card-stars"><i className="material-icons">star</i>&nbsp;{starCount}</span>
               <span className="card-forks"><i className="material-icons">assessment</i>&nbsp;{forkCount}</span>
             </div>
@@ -43,7 +43,7 @@ const Card = ({title, lang, starCount, forkCount, description, link}) => {
 
 Card.propTypes = {
   title: PropTypes.string.isRequired,
-  lang: PropTypes.string,
+  language: PropTypes.string,
   starCount: PropTypes.number,
   forkCount: PropTypes.number,
   description: PropTypes.string,

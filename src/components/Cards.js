@@ -11,7 +11,7 @@ const Cards = ({cards}) => {
             <Card
               key={i}
               title={card.full_name}
-              lang={card.language}
+              language={card.language}
               starCount={card.stargazers_count}
               forkCount={card.forks_count}
               description={card.description}
