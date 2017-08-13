@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GitForm = ({form, updateSearchTextInput, updateSearchType}) => {
+const GitForm = ({searchForm, updateSearchTextInput, updateSearchType}) => {
   const buttonColour = buttonType => {
-    return form.searchType === buttonType ? "col s10 offset-s1 m8 offset-m2 btn waves-effect teal waves-light" : "btn col s10 offset-s1 m8 offset-m2 waves-effect grey waves-teal"
+    return searchForm.searchType === buttonType ? "col s10 offset-s1 m8 offset-m2 btn waves-effect teal waves-light" : "btn col s10 offset-s1 m8 offset-m2 waves-effect grey waves-teal"
   }
   const handleClick = (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ const GitForm = ({form, updateSearchTextInput, updateSearchType}) => {
                 className="active"
                 type="text"
                 id="keyWords"
-                value={form.keyWords}
+                value={searchForm.keyWords}
                 onChange={updateSearchTextInput}
               />
             </label>
@@ -34,7 +34,7 @@ const GitForm = ({form, updateSearchTextInput, updateSearchType}) => {
                 className="active"
                 type="text"
                 id="language"
-                value={form.language}
+                value={searchForm.language}
                 onChange={updateSearchTextInput}
               />
             </label>
@@ -68,7 +68,7 @@ const GitForm = ({form, updateSearchTextInput, updateSearchType}) => {
 };
 
 GitForm.propTypes = {
-  form: PropTypes.object.isRequired,
+  searchForm: PropTypes.object.isRequired,
   updateSearchTextInput: PropTypes.func.isRequired,
   updateSearchType: PropTypes.func.isRequired,
 };

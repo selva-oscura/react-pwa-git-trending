@@ -5,17 +5,17 @@ import ErrorMessages from './ErrorMessages';
 import SearchSummary from './SearchSummary';
 import Cards from './Cards';
 
-const Main = ({errors, form, updateSearchTextInput, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
+const Main = ({errors, searchForm, updateSearchTextInput, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
   return (
     <main className="Main container">
       
       <GitForm
-        form={form}
+        searchForm={searchForm}
         updateSearchTextInput={updateSearchTextInput}
         updateSearchType={updateSearchType}
       />
 
-      { errors.messages.length ? <ErrorMessages errorMessages={errors.messages} errorRemovalInProgress={errors.removalInProgress} /> : null}
+      { errors.messages && errors.messages.length ? <ErrorMessages errorMessages={errors.messages} errorRemovalInProgress={errors.removalInProgress} /> : null}
       
       <SearchSummary
         lastSearchParameters={lastSearchParameters}
@@ -33,7 +33,7 @@ const Main = ({errors, form, updateSearchTextInput, updateSearchType, cards, las
 
 Main.propTypes = {
   errors: PropTypes.object.isRequired,
-  form: PropTypes.object.isRequired,
+  searchForm: PropTypes.object.isRequired,
   updateSearchTextInput: PropTypes.func.isRequired,
   updateSearchType: PropTypes.func.isRequired,
   cards: PropTypes.array,
