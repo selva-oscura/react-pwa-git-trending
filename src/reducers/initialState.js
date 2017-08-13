@@ -14,4 +14,7 @@ export default {
     messages: [],
     removalInProgress: false,
   },
+  ajaxCalls:{
+    callsInProgress: false,
+  }
 }
