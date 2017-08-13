@@ -6,6 +6,7 @@ const Loading = ({ajaxCallsInProgress}) => {
   return(
     <div
       id="Loading"
+      className={ ajaxCallsInProgress ? "animate-in" : "animate-out" }
     >
 			<div className="loader">
 			  <svg className="circular">
