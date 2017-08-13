@@ -18,9 +18,9 @@ const Card = ({title, lang, starCount, forkCount, description, link}) => {
             }
             </span>
             <div className="card-sub grey-text text-lighten-2">
-              <i className="material-icons">info</i><span className="card-lang"> {lang}</span>
-              <i className="material-icons">star</i><span className="card-stars"> {starCount}</span>
-              <i className="material-icons">assessment</i><span className="card-forks"> {forkCount}</span>
+              <span className="card-lang"><i className="material-icons">info</i>&nbsp;{lang || "Unspecified"}</span>
+              <span className="card-stars"><i className="material-icons">star</i>&nbsp;{starCount}</span>
+              <span className="card-forks"><i className="material-icons">assessment</i>&nbsp;{forkCount}</span>
             </div>
             <p>
               {
