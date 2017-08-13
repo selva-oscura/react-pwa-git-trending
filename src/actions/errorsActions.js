@@ -5,7 +5,6 @@ export function updateErrorsSuccess(errors) {
 }
 
 export function updateErrors(errors) {
-	console.log("ERRORS from updateErrors", errors);
 	return function(dispatch) {
 		let {messages} = errors;
 		dispatch(updateErrorsSuccess({
