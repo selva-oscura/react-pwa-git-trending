@@ -1,21 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import "./Loading.css";
 
-const Loading = (loaded) => {
+const Loading = ({ajaxCallsInProgress}) => {
   return(
-    <div className="Loading">
-      <i
-        id="loading"
-        className="material-icons teal-text"
-      >
-        refresh
-      </i>
+    <div
+      id="Loading"
+    >
+			<div className="loader">
+			  <svg className="circular">
+			    <circle className="path" cx="25" cy="25" r="10" fill="none" strokeWidth="2" strokeMiterlimit="5"/>
+			  </svg>
+			</div>
     </div>
 	);
 };
 
 Loading.propTypes = {
-  loaded: PropTypes.bool.isRequired,
+  ajaxCallsInProgress: PropTypes.bool.isRequired,
 };
 
 export default Loading;
