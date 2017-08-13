@@ -33,7 +33,8 @@ const api = {
       apiCall += 'stars:%3E25000';
     }
     apiCall += '&sort=stars&order=desc';
-    // console.log('apiCall from inside the api call', apiCall);
+    console.log('apiCall from inside the api call', apiCall);
+
     return axios
       .get(apiCall)
       .then((response) => {
@@ -42,7 +43,6 @@ const api = {
       })
       .catch((error) => {
         console.log("error from inside api.queryGitHub", error);
-        // console.log('api.queryGitHub error', error);
         throw error;
       });
   }
