@@ -5,7 +5,7 @@ export function updateErrorsSuccess(errors) {
 }
 
 export function updateErrors(errors) {
-	console.log("ERRORS", errors);
+	console.log("ERRORS from updateErrors", errors);
 	return function(dispatch) {
 		let {messages} = errors;
 		dispatch(updateErrorsSuccess({
@@ -15,13 +15,15 @@ export function updateErrors(errors) {
 	};
 }
 
-export function clearErrorsDisplaySuccess() {
-	return { type: types.CLEAR_ERRORS_DISPLAY_SUCCESS};
+export function clearErrorsDisplaySuccess(errors) {
+	return { type: types.CLEAR_ERRORS_DISPLAY_SUCCESS, errors};
 }
 
-export function clearErrorsDisplay() {
+export function clearErrorsDisplay(errors) {
 	return function(dispatch) {
+		let {messages} = errors;
 		dispatch(clearErrorsDisplaySuccess({
+			messages: messages,
 			removalInProgress: true,
 		}));
 	};
@@ -31,7 +33,7 @@ export function deleteErrorsSuccess(errors) {
 	return { type: types.DELETE_ERRORS_SUCCESS, errors};
 }
 
-export function deleteErrors(errors) {
+export function deleteErrors() {
 	return function(dispatch) {
 		dispatch(deleteErrorsSuccess({
 			messages: [],
