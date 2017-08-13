@@ -16,10 +16,11 @@ Changes made:
 * Project made with React, bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
 * Used [axios](https://www.npmjs.com/package/axios), not fetch, for queries
 * Additional query options (top v. trending, main language, keywords)
-* Changed query to being triggered on click for Top/Trending/Refresh and after debounced changes to Keywords and Language text inputs (used [throttle-debounce](https://www.npmjs.com/package/throttle-debounce)) and removed submit button
+* Changed query to being triggered on click for Top/Trending/Refresh and after changes to Keywords and Language text inputs (debounced text input changes, using [throttle-debounce](https://www.npmjs.com/package/throttle-debounce)) and removed submit button
+* added Redux (complete overkill for so small a project, but good practice for me)
 
 Changes remaining to be made:
-* add Redux (overkill for so small a project, but good practice for me)
+* add Loading spinner when submitting query
 * store state to localStorage
 * apply masonry to cards
 * deploy to github pages and add link to github repo
