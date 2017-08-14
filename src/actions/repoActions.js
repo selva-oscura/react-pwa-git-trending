@@ -1,4 +1,5 @@
 import * as types from './actionTypes';
+import * as ajaxCallsActions from './ajaxCallsActions';
 import api from '../api/api';
 
 export function loadReposSuccess(repos) {
@@ -12,6 +13,7 @@ const localDateTime = (time) => {
 
 export function loadRepos(searchType, keyWords, language) {
 	return function(dispatch) {
+		dispatch(ajaxCallsActions.updateAjaxCalls({callsInProgress: true}));
 		return api.queryGitHub(searchType, keyWords, language)
 		.then(res => {
 			res.data.items = res.data.items.map((item) => {
@@ -27,7 +29,9 @@ export function loadRepos(searchType, keyWords, language) {
 				lastUpdated: lastUpdated,
 				lastUpdatedLocal: lastUpdatedLocal,
 			}));
+			dispatch(ajaxCallsActions.updateAjaxCalls({callsInProgress: false}));
 		}).catch(error => {
+			dispatch(ajaxCallsActions.updateAjaxCalls({callsInProgress: false}));
 			throw error;
 		});
 	}
