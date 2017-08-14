@@ -1,12 +1,12 @@
 #react-pwa-git-trending
 
-Basic offline page for viewing top and trending GitHub repositories 
+Basic offline page for viewing top and trending GitHub repositories (internet connection required for initial load and for updates, but most recently viewed results will remain available offline).
 
-To run:
+To run locally (directions assume that you have node (v.6+), npm, and git installed):
 * download or clone project (in terminal, type <code>git clone https://github.com/selva-oscura/react-pwa-git-trending.git</code>),
 * switch to project directory (in terminal, type <code>cd react-pwa-git-trending</code>),
-* install dependencies (in terminal, type <code>npm install</code>),
-* run project (in terminal, type <code>npm start</code>),
+* install dependencies (in terminal, type <code>yarn install</code> or <code>npm install</code>),
+* run project (in terminal, type <code>yarn start</code> or <code>npm start</code>),
 * view in browser at localhost:3000
 
 
@@ -17,12 +17,12 @@ Changes made:
 * Used [axios](https://www.npmjs.com/package/axios), not fetch, for queries
 * Additional query options (top v. trending, main language, keywords)
 * Changed query to being triggered on click for Top/Trending/Refresh and after changes to Keywords and Language text inputs (debounced text input changes, using [throttle-debounce](https://www.npmjs.com/package/throttle-debounce)) and removed submit button
-* added Redux (complete overkill for so small a project, but good practice for me)
+* added [Redux](https://www.npmjs.com/package/redux), as well as [react-redux](https://www.npmjs.com/package/react-redux) and [redux-thunk](https://www.npmjs.com/package/redux-thunk) -- complete overkill for so small a project, but good opportunity for me to practice adding Redux to a project
+* added Loading spinner for query in progress
+* applied masonry.js to card components, using [react-masonry-component](https://www.npmjs.com/package/react-masonry-component)
 
 Changes remaining to be made:
-* add Loading spinner when submitting query
-* store state to localStorage
-* apply masonry to cards
+* save state to localStorage
 * deploy to github pages and add link to github repo
 * add project screenshot and display on README
 
