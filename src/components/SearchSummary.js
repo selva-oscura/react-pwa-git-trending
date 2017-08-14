@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './SearchSummary.css';
 
 const SearchSummary = ({lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
   const resultsText = () => {
@@ -23,7 +24,7 @@ const SearchSummary = ({lastSearchParameters, lastUpdated, lastUpdatedLocal}) =>
     return text.toUpperCase();
   }
 	return (
-	  <div className="section">
+	  <div id="SearchSummary" className="section">
 	    <div className="row">
 	      <h5 className="header teal-text">{resultsText()}</h5>
 	      <h6>Last Updated: {typeof lastUpdatedLocal === "string" ? lastUpdatedLocal : "never"}</h6>
