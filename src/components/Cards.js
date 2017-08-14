@@ -6,13 +6,11 @@ import Card from './Card';
 const Cards = ({ cards }) => {
   const masonryOptions = {
     transitionDuration: 0,
-  }
+  };
   return (
     <div className="section">
       <div className="row">
-        <Masonry 
-          options={masonryOptions}
-        >
+        <Masonry options={masonryOptions}>
           {cards && cards.length > 0
             ? cards.map((card, i) =>
                 <Card
@@ -25,8 +23,7 @@ const Cards = ({ cards }) => {
                   link={card.html_url}
                 />
               )
-            : <p>No results found</p>
-          }
+            : <p>No results found</p>}
         </Masonry>
       </div>
     </div>
