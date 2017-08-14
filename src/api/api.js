@@ -33,12 +33,12 @@ const api = {
       apiCall += 'stars:%3E25000';
     }
     apiCall += '&sort=stars&order=desc';
-    console.log('apiCall from inside the api call', apiCall);
+    // console.log('apiCall from inside the api call', apiCall);
 
     return axios
       .get(apiCall)
       .then((response) => {
-        console.log('api.queryGitHub response', response);
+        // console.log('api.queryGitHub response', response);
         return response;
       })
       .catch((error) => {
