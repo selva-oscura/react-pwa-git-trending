@@ -17,27 +17,16 @@ class App extends Component {
     this.updateSearchTextInput = this.updateSearchTextInput.bind(this);
     this.updateSearchType = this.updateSearchType.bind(this);
   }
-  delay(t){
-    console.log('hitting delay (setTimeout)');
-    return new Promise((resolve) => {
-      setTimeout(resolve, t)
-    });
-  }
   queryGitHub(searchForm=this.props.state.searchForm){
     let { searchType, keyWords, language } = searchForm;
     this.props.actions.repoActions.loadRepos(
       searchType, keyWords, language
     ).then(res => {
-      let errors = this.props.state.errors;
-      // let now = Math.floor(new Date().getTime()/1000);
-      // console.log("TICK at", now);
-      this.props.actions.errorsActions.clearErrorsDisplay(errors);
+      this.props.actions.errorsActions.clearErrorsDisplay(this.props.state.errors);
     }).then(res => {
-      this.delay(1000).then(() => {
-        // let now = Math.floor(new Date().getTime()/1000);
-        // console.log("TOCK at", now);
-        this.props.actions.errorsActions.deleteErrors();
-      })
+      setTimeout(() => {
+        this.props.actions.errorsActions.deleteErrors();        
+      }, 1000);
     }).catch(error => {
       let messages = [];
       if (error.message==="Network Error") {
@@ -49,11 +38,10 @@ class App extends Component {
       } else {
         messages.push(String(error));
       }
-      let errors = {
-       messages: messages,
-       removalInProgress: false,
-      }
-      this.props.actions.errorsActions.updateErrors(errors);
+      this.props.actions.errorsActions.updateErrors({
+        messages: messages,
+        removalInProgress: false,
+      });
     });
   }
   debounceQueryGitHub(){
@@ -69,7 +57,7 @@ class App extends Component {
     let searchForm = this.props.state.searchForm;
     searchForm.searchType = searchType;
     this.props.actions.searchFormActions.updateSearchForm(searchForm);
-    this.queryGitHub();
+    this.queryGitHub(searchForm);
   }
   componentWillMount(){
     let {repos, searchForm} = this.props.state;
