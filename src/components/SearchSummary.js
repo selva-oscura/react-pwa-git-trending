@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const SearchSummary = ({lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
   const resultsText = () => {
-    let text = `${lastSearchParameters.searchType} results`;
+    let text = `${lastSearchParameters.searchType} repositories`;
     if(lastSearchParameters.keyWords || lastSearchParameters.language){
       text += " for ";
     }
