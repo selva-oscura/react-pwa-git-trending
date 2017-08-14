@@ -6,32 +6,41 @@ import Loading from './Loading';
 import SearchSummary from './SearchSummary';
 import Cards from './Cards';
 
-const Main = ({errors, ajaxCallsInProgress, searchForm, updateSearchTextInput, updateSearchType, cards, lastSearchParameters, lastUpdated, lastUpdatedLocal}) => {
+const Main = ({
+  errors,
+  ajaxCallsInProgress,
+  searchForm,
+  updateSearchTextInput,
+  updateSearchType,
+  cards,
+  lastSearchParameters,
+  lastUpdated,
+  lastUpdatedLocal,
+}) => {
   return (
     <main className="Main container">
-      
       <GitForm
         searchForm={searchForm}
         updateSearchTextInput={updateSearchTextInput}
         updateSearchType={updateSearchType}
       />
 
-      { errors.messages && errors.messages.length ? <ErrorMessages errorMessages={errors.messages} errorRemovalInProgress={errors.removalInProgress} /> : null}
-      
+      {errors.messages && errors.messages.length
+        ? <ErrorMessages
+            errorMessages={errors.messages}
+            errorRemovalInProgress={errors.removalInProgress}
+          />
+        : null}
+
       <SearchSummary
         lastSearchParameters={lastSearchParameters}
         lastUpdated={lastUpdated}
         lastUpdatedLocal={lastUpdatedLocal}
       />
 
-      <Loading
-        ajaxCallsInProgress={ajaxCallsInProgress}
-      />
+      <Loading ajaxCallsInProgress={ajaxCallsInProgress} />
 
-      <Cards
-        cards={cards}
-      />
-
+      <Cards cards={cards} />
     </main>
   );
 };

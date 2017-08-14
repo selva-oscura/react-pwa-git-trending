@@ -1,22 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const GitForm = ({searchForm, updateSearchTextInput, updateSearchType}) => {
+const GitForm = ({ searchForm, updateSearchTextInput, updateSearchType }) => {
   const buttonColour = buttonType => {
-    return searchForm.searchType === buttonType ? "col s12 btn waves-effect teal waves-light" : "btn col s12 waves-effect grey waves-teal"
-  }
-  const handleClick = (e) => {
+    return searchForm.searchType === buttonType
+      ? 'col s12 btn waves-effect teal waves-light'
+      : 'btn col s12 waves-effect grey waves-teal';
+  };
+  const handleClick = e => {
     e.preventDefault();
-    updateSearchType(e.target.id)
+    updateSearchType(e.target.id);
   };
   return (
     <div className="GitForm section">
       <form>
         <div className="row">
-          <div
-            className="col s12 m6"
-          >
-            <label htmlFor="keyWords">Keyword(s)
+          <div className="col s12 m6">
+            <label htmlFor="keyWords">
+              Keyword(s)
               <input
                 className="active"
                 type="text"
@@ -26,10 +27,9 @@ const GitForm = ({searchForm, updateSearchTextInput, updateSearchType}) => {
               />
             </label>
           </div>
-          <div
-            className="col s12 m6"
-          >
-            <label htmlFor="language">Language
+          <div className="col s12 m6">
+            <label htmlFor="language">
+              Language
               <input
                 className="active"
                 type="text"
@@ -41,9 +41,7 @@ const GitForm = ({searchForm, updateSearchTextInput, updateSearchType}) => {
           </div>
         </div>
         <div className="row">
-          <div
-            className="col s6"
-          >
+          <div className="col s6">
             <button
               className={buttonColour('top')}
               id="top"
@@ -52,9 +50,7 @@ const GitForm = ({searchForm, updateSearchTextInput, updateSearchType}) => {
               Top
             </button>
           </div>
-          <div
-            className="col s6"
-          >
+          <div className="col s6">
             <button
               className={buttonColour('trending')}
               id="trending"

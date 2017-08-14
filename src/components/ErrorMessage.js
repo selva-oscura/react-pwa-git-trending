@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ErrorMessage = ({error}) => {
-	return (
-		<span>
-			{error}<br/>
-		</span>
-	);
+const ErrorMessage = ({ error }) => {
+  return (
+    <span>
+      {error}
+      <br />
+    </span>
+  );
 };
 
 ErrorMessage.propTypes = {
