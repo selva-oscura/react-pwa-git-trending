@@ -11,7 +11,7 @@ const localDateTime = (time) => {
   return `${time.getFullYear()}-${pad(time.getMonth() + 1)}-${pad(time.getDate())}, ${pad(time.getHours())}:${pad(time.getMinutes())}:${pad(time.getSeconds())}`;
 }
 
-export function loadRepos(searchType, keyWords, language) {
+export function loadRepos(searchType = "top", keyWords = "", language = "") {
 	return function(dispatch) {
 		dispatch(ajaxCallsActions.updateAjaxCalls({callsInProgress: true}));
 		return api.queryGitHub(searchType, keyWords, language)
@@ -28,6 +28,7 @@ export function loadRepos(searchType, keyWords, language) {
 				items: res.data.items,
 				lastUpdated: lastUpdated,
 				lastUpdatedLocal: lastUpdatedLocal,
+				lastQuery: {searchType, keyWords, language},
 			}));
 			dispatch(ajaxCallsActions.updateAjaxCalls({callsInProgress: false}));
 		}).catch(error => {
