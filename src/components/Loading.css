@@ -1,25 +1,23 @@
 #Loading{
-	height: 50px;
+  height: 50px;
 }
 
 #Loading.animate-in{
-/*	max-height: 50px;*/
-	opacity: 1;
-	-webkit-animation: animate-in 1s;
-	-moz-animation: animate-in 1s;
-	-ms-animation: animate-in 1s;
-	-o-animation: animate-in 1s;
-	animation: animate-in 1s;
+  opacity: 1;
+  -webkit-animation: animate-in 1s;
+  -moz-animation: animate-in 1s;
+  -ms-animation: animate-in 1s;
+  -o-animation: animate-in 1s;
+  animation: animate-in 1s;
 }
 
 #Loading.animate-out{
-/*	max-height: 0;*/
-	opacity: 0;
-	-webkit-animation: animate-out .25s;
-	-moz-animation: animate-out .25s;
-	-ms-animation: animate-out .25s;
-	-o-animation: animate-out .25s;
-	animation: animate-out .25s;
+  opacity: 0;
+  -webkit-animation: animate-out .25s;
+  -moz-animation: animate-out .25s;
+  -ms-animation: animate-out .25s;
+  -o-animation: animate-out .25s;
+  animation: animate-out .25s;
 }
 
 @-webkit-keyframes animate-in {
@@ -83,23 +81,25 @@
 
 @keyframes rotate{
  100%{
-  transform: rotate(360deg);
- }
+    transform: rotate(360deg);
+  }
 }
+
 @keyframes dash{
- 0%{
-  stroke-dasharray: 1,200;
-  stroke-dashoffset: 0;
- }
- 50%{
-  stroke-dasharray: 89,200;
-  stroke-dashoffset: -36;
- }
- 100%{
-  stroke-dasharray: 89,200;
-  stroke-dashoffset: -124;
- }
+  0%{
+    stroke-dasharray: 1,200;
+    stroke-dashoffset: 0;
+  }
+  50%{
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -36;
+  }
+  100%{
+    stroke-dasharray: 89,200;
+    stroke-dashoffset: -124;
+  }
 }
+
 @keyframes color{
   100%, 0%{
     stroke: rgba(0, 150, 136, 1);
@@ -117,12 +117,12 @@
     stroke: rgba(158, 158, 158, 1);
   }
   60%{
-		stroke: rgba(158, 158, 158, .6);
+    stroke: rgba(158, 158, 158, .6);
   }
   66%{
-  	stroke: rgba(0, 150, 136, .6);  	
+    stroke: rgba(0, 150, 136, .6);
   }
   83%{
-  	stroke: rgba(0, 150, 136, .8);
+    stroke: rgba(0, 150, 136, .8);
   }
 }
