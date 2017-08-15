@@ -14,14 +14,13 @@
   },
   "devDependencies": {
     "prettier": "^1.5.3",
-    "prettier-css": "^0.0.7",
     "react-scripts": "1.0.10",
     "redux-immutable-state-invariant": "^2.0.0",
     "redux-mock-store": "^1.2.3"
   },
   "scripts": {
     "start": "react-scripts start",
-    "prestart": "prettier --single-quote --trailing-comma es5 --write src/index.js src/components/*.js && prettier-css index.css",
+    "prestart": "prettier --single-quote --trailing-comma es5 --write src/index.js src/components/*.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
