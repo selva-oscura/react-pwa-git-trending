@@ -4,6 +4,11 @@ export default {
     items:[],
     lastUpdated: -Infinity,
     lastUpdatedLocal: -Infinity,
+    lastQuery: {
+      searchType: '',
+      keyWords: '',
+      language: '',
+    },
   },
   searchForm: {
     searchType: 'top',
