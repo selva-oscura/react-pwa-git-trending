@@ -96,7 +96,7 @@ class App extends Component {
           updateSearchTextInput={this.updateSearchTextInput}
           updateSearchType={this.updateSearchType}
           cards={state.repos.items}
-          lastSearchParameters={state.searchForm}
+          lastSearchParameters={state.repos.lastQuery}
           lastUpdated={state.repos.lastUpdated}
           lastUpdatedLocal={state.repos.lastUpdatedLocal}
         />
