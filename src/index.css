@@ -9,8 +9,8 @@ body {
   font-family: 'Material Icons';
   font-style: normal;
   font-weight: 400;
-  src: url(./fonts/MaterialIcons-Regular.eot); /* IE9 Compat Modes */
-  src: url('./fonts/MaterialIcons-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  src: url(./fonts/MaterialIcons-Regular.eot);
+  src: url('./fonts/MaterialIcons-Regular.eot?#iefix') format('embedded-opentype'),
        local('MaterialIcons-Regular'),
        url('./fonts/MaterialIcons-Regular.woff2') format('woff2'),
        url('./fonts/MaterialIcons-Regular.woff') format('woff'),
@@ -21,7 +21,7 @@ body {
   font-family: 'Material Icons';
   font-weight: normal;
   font-style: normal;
-  font-size: 24px;  /* Preferred icon size */
+  font-size: 24px;
   display: inline-block;
   line-height: 1;
   text-transform: none;
