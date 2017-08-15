@@ -4,7 +4,13 @@ const initialState = () => {
   console.log('localStore', localStore);
   if(localStore && localStore.gitUp){
     console.log("localStorage and gitUp data in localStorage");
-    initialState = localStore.gitUp;
+    const { repos, searchForm, errors, ajaxCalls } = localStorage.gitUp;
+    initialState = {
+      repos,
+      searchForm,
+      errors,
+      ajaxCalls,
+    };
   } else{
     console.log("no localStorage or no gitUp data in localStorage");
     initialState = {
@@ -33,6 +39,7 @@ const initialState = () => {
       }
     }
   }
+  console.log('basing initialState on localStorage', localStore && localStore.gitUp, '\ninitialState is', initialState);
   return initialState;
 }
 
