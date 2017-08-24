@@ -107,7 +107,7 @@ class App extends Component {
         language: language.toLowerCase(),
       });
       let repos = JSON.parse(localStorage.gitUp).savedResults[searchKey];
-      if(repos){      
+      if(repos){
         repos.lastQuery = searchParams;
         return repos;
       }
@@ -115,10 +115,10 @@ class App extends Component {
     let now = new Date();
     let lastUpdated = now.getTime();
     let lastUpdatedLocal = utils.localDateTime(now);
-    return { 
-      totalCount: null, 
-      items: [], 
-      lastUpdated, 
+    return {
+      totalCount: null,
+      items: [],
+      lastUpdated,
       lastUpdatedLocal,
       lastQuery: searchParams,
     }
