@@ -13,7 +13,7 @@ const Main = ({
   updateSearchTextInput,
   updateSearchType,
   cards,
-  lastSearchParameters,
+  lastSearch,
   lastUpdated,
   lastUpdatedLocal,
 }) => {
@@ -33,7 +33,7 @@ const Main = ({
         : null}
 
       <SearchSummary
-        lastSearchParameters={lastSearchParameters}
+        lastSearch={lastSearch}
         lastUpdated={lastUpdated}
         lastUpdatedLocal={lastUpdatedLocal}
       />
@@ -52,6 +52,7 @@ Main.propTypes = {
   updateSearchTextInput: PropTypes.func.isRequired,
   updateSearchType: PropTypes.func.isRequired,
   cards: PropTypes.array,
+  lastSearch: PropTypes.object.isRequired,
   lastUpdated: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   lastUpdatedLocal: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };

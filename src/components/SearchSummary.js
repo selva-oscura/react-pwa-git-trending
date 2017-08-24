@@ -3,27 +3,28 @@ import PropTypes from 'prop-types';
 import './SearchSummary.css';
 
 const SearchSummary = ({
-  lastSearchParameters,
+  lastSearch,
   lastUpdated,
   lastUpdatedLocal,
 }) => {
+  // console.log('lastSearch, lastUpdated, lastUpdatedLocal from searchSummary, line 10',lastSearch, lastUpdated, lastUpdatedLocal);
   const resultsText = () => {
-    let text = `${lastSearchParameters.searchType} repositories`;
-    if (lastSearchParameters.keyWords || lastSearchParameters.language) {
+    let text = `${lastSearch.searchType} repositories`;
+    if (lastSearch.keyWords || lastSearch.language) {
       text += ' for ';
     }
-    if (lastSearchParameters.keyWords) {
+    if (lastSearch.keyWords) {
       text += 'keyword';
-      if (lastSearchParameters.keyWords.includes(' ')) {
+      if (lastSearch.keyWords.includes(' ')) {
         text += 's';
       }
-      text += `: ${lastSearchParameters.keyWords}`;
+      text += `: ${lastSearch.keyWords}`;
     }
-    if (lastSearchParameters.keyWords && lastSearchParameters.language) {
+    if (lastSearch.keyWords && lastSearch.language) {
       text += ' and ';
     }
-    if (lastSearchParameters.language) {
-      text += `language: ${lastSearchParameters.language}`;
+    if (lastSearch.language) {
+      text += `language: ${lastSearch.language}`;
     }
     return text.toUpperCase();
   };
@@ -43,6 +44,7 @@ const SearchSummary = ({
 };
 
 SearchSummary.propTypes = {
+  lastSearch: PropTypes.object.isRequired,
   lastUpdated: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   lastUpdatedLocal: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
