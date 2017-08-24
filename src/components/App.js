@@ -81,7 +81,7 @@ class App extends Component {
         lastQuery,
       } = repos;
 
-      if(localStore.gitUp){
+      if (localStore.gitUp) {
         gitUp = JSON.parse(localStore.gitUp);
       } else {
         gitUp = {};
@@ -107,7 +107,7 @@ class App extends Component {
         language: language.toLowerCase(),
       });
       let repos = JSON.parse(localStorage.gitUp).savedResults[searchKey];
-      if(repos){
+      if (repos) {
         repos.lastQuery = searchParams;
         return repos;
       }
@@ -171,9 +171,9 @@ class App extends Component {
           messages.push(String(error));
         }
         let savedSearch = this.pullResultsFromLocalStorage(searchForm);
-        if(savedSearch){
+        if (savedSearch) {
           this.props.actions.repoActions.loadSavedData(savedSearch);
-          if(this.props.state.repos.items.length>0){
+          if (this.props.state.repos.items.length>0) {
             messages.push('Results from the last time you did this search are being displayed.')
           }
         }
