@@ -125,8 +125,7 @@ class App extends Component {
   }
   queryGitHub(searchForm = this.props.state.searchForm) {
     let { searchType, keyWords, language } = searchForm;
-    this.props.actions.repoActions
-      .loadRepos(searchType, keyWords, language)
+    this.props.actions.repoActions.loadRepos(searchType, keyWords, language)
       .then(res => {
         this.props.actions.errorsActions.clearErrorsDisplay(
           this.props.state.errors
