@@ -1,6 +1,21 @@
 {
   "name": "react-pwa-git-trending",
   "version": "0.1.0",
+  "description": "React webpage for displaying top and trending github repos (search by language and/or keyword)",
+  "homepage": "https://selva-oscura.github.io/react-pwa-git-trending",
+  "repositories": {
+    "type": "git",
+    "url": "git+https://github.com/selva-oscura/react-pwa-git-trending"
+  },
+  "keywords": [
+    "React",
+    "axios",
+    "Redux"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/selva-oscura/react-pwa-git-trending/issues"
+  },
   "private": true,
   "dependencies": {
     "axios": "^0.16.2",
@@ -13,6 +28,7 @@
     "throttle-debounce": "^1.0.1"
   },
   "devDependencies": {
+    "gh-pages": "^1.0.0",
     "prettier": "^1.5.3",
     "react-scripts": "1.0.10",
     "redux-immutable-state-invariant": "^2.0.0",
@@ -23,6 +39,8 @@
     "prestart": "prettier --single-quote --trailing-comma es5 --write src/index.js src/components/*.js",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "yarn run build",
+    "deploy": "gh-pages -d build"
   }
 }
