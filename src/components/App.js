@@ -72,7 +72,7 @@ class App extends Component {
     let localStore = localStorage;
     if (localStore) {
       let gitUp;
-      const {repos, searchForm} = this.props.state;
+      const { repos, searchForm } = this.props.state;
       const {
         totalCount,
         items,
@@ -121,11 +121,12 @@ class App extends Component {
       lastUpdated,
       lastUpdatedLocal,
       lastQuery: searchParams,
-    }
+    };
   }
   queryGitHub(searchForm = this.props.state.searchForm) {
     let { searchType, keyWords, language } = searchForm;
-    this.props.actions.repoActions.loadRepos(searchType, keyWords, language)
+    this.props.actions.repoActions
+      .loadRepos(searchType, keyWords, language)
       .then(res => {
         this.props.actions.errorsActions.clearErrorsDisplay(
           this.props.state.errors
@@ -140,10 +141,10 @@ class App extends Component {
         }, 1000);
       })
       .catch(error => {
-        console.log('error', error)
-        console.log('error', error.message)
-        console.log('error', error.response)
-        console.log('error', error.response.status)
+        console.log('error', error);
+        console.log('error', error.message);
+        console.log('error', error.response);
+        console.log('error', error.response.status);
         this.saveOfflineStateToLocalStorage();
         let messages = [];
         if (error.message === 'Network Error') {
@@ -152,15 +153,18 @@ class App extends Component {
             'Please check your internet connection.'
           );
         } else if (error.response.status === 422) {
-          messages.push('I\'m sorry, but GitHub doesn\'t recognise the keyword(s) and/or language.', 'Please check for spelling errors.')
+          messages.push(
+            "I'm sorry, but GitHub doesn't recognise the keyword(s) and/or language.",
+            'Please check for spelling errors.'
+          );
         } else if (
           error.response &&
           error.response.data &&
           error.response.data.message
-        ){
+        ) {
           if (error.response.data.message.includes('API rate limit exceeded')) {
             messages.push(
-              'I\'m sorry, but GitHub is rate limited and the limit has been exceeded.',
+              "I'm sorry, but GitHub is rate limited and the limit has been exceeded.",
               'Please wait a minute before resubmitting the query.'
             );
           } else {
@@ -172,8 +176,10 @@ class App extends Component {
         let savedSearch = this.pullResultsFromLocalStorage(searchForm);
         if (savedSearch) {
           this.props.actions.repoActions.loadSavedData(savedSearch);
-          if (this.props.state.repos.items.length>0) {
-            messages.push('Results from the last time you did this search are being displayed.')
+          if (this.props.state.repos.items.length > 0) {
+            messages.push(
+              'Results from the last time you did this search are being displayed.'
+            );
           }
         }
         this.props.actions.errorsActions.updateErrors({

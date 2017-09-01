@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './SearchSummary.css';
 
-const SearchSummary = ({
-  lastSearch,
-  lastUpdated,
-  lastUpdatedLocal,
-}) => {
+const SearchSummary = ({ lastSearch, lastUpdated, lastUpdatedLocal }) => {
   // console.log('lastSearch, lastUpdated, lastUpdatedLocal from searchSummary, line 10',lastSearch, lastUpdated, lastUpdatedLocal);
   const resultsText = () => {
     let text = `${lastSearch.searchType} repositories`;
