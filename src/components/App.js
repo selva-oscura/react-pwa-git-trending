@@ -202,7 +202,7 @@ class App extends Component {
     this.props.actions.searchFormActions.updateSearchForm(searchForm);
     this.queryGitHub(searchForm);
   }
-  componentWillMount() {
+  componentDidMount() {
     let { repos, searchForm } = this.props.state;
     if (typeof repos.lastUpdated === 'number') {
       this.queryGitHub(searchForm);
