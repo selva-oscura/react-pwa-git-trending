@@ -1,4 +1,4 @@
-#react-pwa-git-trending
+# react-pwa-git-trending
 
 Basic offline page for viewing top and trending GitHub repositories (internet connection required for initial load and for updates, but most recently viewed results will remain available offline).
 
