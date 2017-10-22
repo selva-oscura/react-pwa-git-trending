@@ -141,10 +141,9 @@ class App extends Component {
         }, 1000);
       })
       .catch(error => {
-        console.log('error', error);
-        console.log('error', error.message);
-        console.log('error', error.response);
-        console.log('error', error.response.status);
+        // console.log('error', error);
+        // console.log('error', error.message);
+        // console.log('error', error.response);
         this.saveOfflineStateToLocalStorage();
         let messages = [];
         if (error.message === 'Network Error') {
