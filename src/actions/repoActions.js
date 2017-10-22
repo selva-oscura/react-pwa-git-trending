@@ -11,7 +11,7 @@ export function loadReposSuccess(repos) {
 export function loadRepos(searchType = "top", keyWords = "", language = "") {
 	return function(dispatch) {
 		dispatch(ajaxCallsActions.updateAjaxCalls({callsInProgress: true}));
-		return api.queryGitHub(searchType, keyWords, language)
+		return api.queryGH(searchType, keyWords, language)
 		.then(res => {
 			res.data.items = res.data.items.map((item) => {
 				const {full_name, language, stargazers_count, forks_count, description, html_url} = item;
