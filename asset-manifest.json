@@ -1,11 +1,10 @@
 {
-  "main.css": "static/css/main.8cb6cc43.css",
-  "main.css.map": "static/css/main.8cb6cc43.css.map",
-  "main.js": "static/js/main.3e779b28.js",
-  "main.js.map": "static/js/main.3e779b28.js.map",
-  "static/media/MaterialIcons-Regular.eot": "static/media/MaterialIcons-Regular.e79bfd88.eot",
-  "static/media/MaterialIcons-Regular.ttf": "static/media/MaterialIcons-Regular.a37b0c01.ttf",
-  "static/media/MaterialIcons-Regular.woff": "static/media/MaterialIcons-Regular.012cf6a1.woff",
-  "static/media/MaterialIcons-Regular.woff2": "static/media/MaterialIcons-Regular.570eb838.woff2",
-  "static/media/card-bg.png": "static/media/card-bg.a998e081.png"
+  "main.css": "static/css/main.221cf5bd.css",
+  "main.css.map": "static/css/main.221cf5bd.css.map",
+  "main.js": "static/js/main.81a1324b.js",
+  "main.js.map": "static/js/main.81a1324b.js.map",
+  "static/media/card-bg.png": "static/media/card-bg.a998e081.png",
+  "static/media/info.svg": "static/media/info.0d1c5536.svg",
+  "static/media/repo-forked.svg": "static/media/repo-forked.8be17972.svg",
+  "static/media/star.svg": "static/media/star.3247300f.svg"
 }
