@@ -1,6 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import BreakingText from './BreakingText';
+import infoOcticon from '../images/info.svg';
+import forksOcticon from '../images/repo-forked.svg';
+import starOcticon from '../images/star.svg';
 import './Card.css';
 
 const Card = ({ title, language, starCount, forkCount, description, link }) => {
@@ -14,13 +17,24 @@ const Card = ({ title, language, starCount, forkCount, description, link }) => {
             </span>
             <div className="card-sub grey-text text-lighten-2">
               <span className="card-lang">
-                <i className="material-icons">info</i>&nbsp;{language || 'Unspecified'}
+                <img
+                  src={infoOcticon}
+                  alt="info language"
+                  className="octicons"
+                />
+                {language || 'Unspecified'}&nbsp;
               </span>
               <span className="card-stars">
-                <i className="material-icons">star</i>&nbsp;{starCount}
+                <img src={starOcticon} alt="star count" className="octicons" />
+                {starCount}&nbsp;
               </span>
               <span className="card-forks">
-                <i className="material-icons">assessment</i>&nbsp;{forkCount}
+                <img
+                  src={forksOcticon}
+                  alt="forks count"
+                  className="octicons"
+                />
+                {forkCount}
               </span>
             </div>
             <p>
@@ -28,7 +42,7 @@ const Card = ({ title, language, starCount, forkCount, description, link }) => {
             </p>
           </div>
           <div className="card-action">
-            <a href={link} className="card-link">
+            <a href={link} className="card-link amber-text text-lighten-1">
               Visit Repo
             </a>
           </div>
