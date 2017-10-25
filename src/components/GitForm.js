@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './GitForm.css';
 
 const GitForm = ({ searchForm, updateSearchTextInput, updateSearchType }) => {
   const buttonColour = buttonType => {
     return searchForm.searchType === buttonType
       ? 'col s12 btn waves-effect teal waves-light'
-      : 'btn col s12 waves-effect grey waves-teal';
+      : 'btn col s12 waves-effect grey darken-1 waves-teal';
   };
   const handleClick = e => {
     e.preventDefault();
@@ -15,7 +16,7 @@ const GitForm = ({ searchForm, updateSearchTextInput, updateSearchType }) => {
     <div className="GitForm section">
       <form>
         <div className="row">
-          <div className="col s12 m6">
+          <div className="col s6">
             <label htmlFor="keyWords">
               Keyword(s)
               <input
@@ -27,7 +28,7 @@ const GitForm = ({ searchForm, updateSearchTextInput, updateSearchType }) => {
               />
             </label>
           </div>
-          <div className="col s12 m6">
+          <div className="col s6">
             <label htmlFor="language">
               Language
               <input
