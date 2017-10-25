@@ -1,12 +1,8 @@
 .card {
   background-size: cover;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/card-bg.png");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("../images/card-bg.jpg");
   word-wrap: break-word;
   -moz-hyphens: auto;
-}
-
-.card-sub .material-icons {
-  font-size: 18px;
 }
 
 .card-sub span {
@@ -16,4 +12,17 @@
 
 .card-content p {
   padding-top: 15px;
+}
+
+.card .card-action a{
+	transition: .3s ease-out;
+}
+
+.card .card-action a:hover{
+	color: #ffffff !important;
+}
+
+.card img.octicons {
+  display: inline-block;
+  vertical-align: text-top;
 }
