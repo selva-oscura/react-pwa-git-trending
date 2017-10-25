@@ -1,17 +1,12 @@
-.Nav button{
-  color: rgba(255, 255, 255, .75);
-  -webkit-transition: color 0.5s ease-in-out; /* Safari */
-  transition: color 0.5s ease-in-out;
+.Nav {
+  overflow: hidden;
+}
+
+.Nav button {
   border: 0;
-  max-height: 54px;
 }
 
-.Nav button:hover{
-  color: rgba(255, 255, 255, 1);
-}
-
-
-.Nav svg{
+.Nav svg {
   height:32px;
   width: 32px;
   margin-top: 12px;
@@ -20,10 +15,17 @@
   transition: fill 0.5s ease-in-out;
 }
 
-.Nav svg:hover{
+.Nav svg:hover {
   fill: rgba(255, 255, 255, 1);
 }
 
+.Nav #refresh {
+  padding: 0;
+}
+
+.Nav #refresh svg {
+  margin: 12px;
+}
 
 @-webkit-keyframes rotate {
   from {
