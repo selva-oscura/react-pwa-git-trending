@@ -1,6 +1,10 @@
-# react-pwa-git-trending
+# GitUp
 
 Basic offline page for viewing top and trending GitHub repositories (internet connection required for initial load and for updates, but most recently viewed results will remain available offline).
+
+See it live at [online](https://selva-oscura.github.io/react-pwa-git-trending) or clone it and run it yourself.
+
+![GitUp](github.com/selva-oscura/react-pwa-git-trending//blob/master/gitup_screenshot.png)
 
 To run locally (directions assume that you have node (v.6+), npm, and git installed):
 * download or clone project (in terminal, type <code>git clone https://github.com/selva-oscura/react-pwa-git-trending.git</code>),
@@ -20,11 +24,8 @@ Changes made:
 * added [Redux](https://www.npmjs.com/package/redux), as well as [react-redux](https://www.npmjs.com/package/react-redux) and [redux-thunk](https://www.npmjs.com/package/redux-thunk) -- complete overkill for so small a project, but good opportunity for me to practice adding Redux to a project
 * added Loading spinner for query in progress
 * applied masonry.js to card components, using [react-masonry-component](https://www.npmjs.com/package/react-masonry-component)
-
-Changes remaining to be made:
-* save state to localStorage
-* deploy to github pages and add link to github repo
-* add project screenshot and display on README
+* saved state to localStorage
+* deployed to github pages
 
 Useful links for queries to the GitHub API:
 * [REST API v3 Getting Started](https://developer.github.com/v3/guides/getting-started/)
