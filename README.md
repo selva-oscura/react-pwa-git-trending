@@ -4,7 +4,7 @@ Basic offline page for viewing top and trending GitHub repositories (internet co
 
 See it live at [online](https://selva-oscura.github.io/react-pwa-git-trending) or clone it and run it yourself.
 
-![GitUp](github.com/selva-oscura/react-pwa-git-trending//blob/master/gitup_screenshot.png)
+![GitUp](https://github.com/selva-oscura/react-pwa-git-trending/blob/master/gitup_screenshot.png)
 
 To run locally (directions assume that you have node (v.6+), npm, and git installed):
 * download or clone project (in terminal, type <code>git clone https://github.com/selva-oscura/react-pwa-git-trending.git</code>),
