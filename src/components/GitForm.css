@@ -1,0 +1,13 @@
+/* label color */
+.GitForm label {
+  color: #757575;
+}
+/* label focus color */
+.GitForm input[type=text]:focus + label {
+  color: #757575
+}
+/* label underline focus color */
+.GitForm input[type=text]:focus {
+  border-bottom: 1px solid #757575;
+  box-shadow: 0 1px 0 0 #757575;
+}
